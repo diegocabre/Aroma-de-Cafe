@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "Cafe Brasil",
+      "image": "./brasil.png",
+      "price": 10.99,
+      "description": "Cafe hecho en Brasil",
+      "category": "Arabico",
+      "brand": "Brasil",
+      "countInStock": 5
+    },
+    {
+      "id": 2,
+      "name": "Cafe Frances",
+      "image": "./frances.jpg",
+      "price": 19.99,
+      "description": "Cafe hecho en Francia",
+      "category": "Arabico",
+      "brand": "Francia",
+      "countInStock": 8
+    }
+  ]
+  

@@ -1,0 +1,39 @@
+/* /src/components/common/Header.css */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #695900;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  .logo img {
+    width: 150px; /* Ajusta el ancho del logo según sea necesario */
+  }
+  
+  .menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .menu li {
+    margin-right: 1rem; /* Espaciado entre los elementos del menú */
+  }
+  
+  .menu a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .icons a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem; /* Espaciado entre los íconos */
+  }
+  
