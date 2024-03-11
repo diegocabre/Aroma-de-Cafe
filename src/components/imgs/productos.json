@@ -2,7 +2,7 @@
     {
       "id": 1,
       "name": "Cafe Brasil",
-      "image": "./brasil.png",
+      "image": "/src/components/imgs/brasil.png",
       "price": 10.99,
       "description": "Cafe hecho en Brasil",
       "category": "Arabico",
@@ -12,7 +12,7 @@
     {
       "id": 2,
       "name": "Cafe Frances",
-      "image": "./frances.jpg",
+      "image": "/src/components/imgs/frances.jpg",
       "price": 19.99,
       "description": "Cafe hecho en Francia",
       "category": "Arabico",

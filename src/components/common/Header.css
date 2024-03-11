@@ -4,8 +4,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #695900;
-    color: white;
+    color: #140f07;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -27,12 +26,12 @@ header {
   }
   
   .menu a {
-    color: white;
+    color: #140f07;
     text-decoration: none;
   }
   
   .icons a {
-    color: white;
+    color: #140f07;
     text-decoration: none;
     margin-left: 1rem; /* Espaciado entre los íconos */
   }

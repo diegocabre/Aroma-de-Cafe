@@ -2,7 +2,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
-import logo from "../imgs/logo.jpg";
+import logo from "../imgs/logo.png";
 import { NavDropdown } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";

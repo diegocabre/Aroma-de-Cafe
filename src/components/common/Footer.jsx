@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../imgs/logo.jpg";
 import { NavLink } from "react-router-dom";
 import "./Footer.css";
 import { Button } from "react-bootstrap";
@@ -8,7 +7,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer">
-        <div className="logo">
+        <div className="contacto">
           <NavLink exact to="/">
             <Button className="boton" variant="light">
               <h2>Contacto</h2>
