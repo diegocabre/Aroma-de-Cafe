@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../imgs/logo.jpg";
 import { NavLink } from "react-router-dom";
 import "./Footer.css";
+import { Button } from "react-bootstrap";
 
 const Footer = () => {
   return (
@@ -9,28 +10,28 @@ const Footer = () => {
       <div className="footer">
         <div className="logo">
           <NavLink exact to="/">
-            <img src={logo} alt="" />
+            <Button className="boton" variant="light">
+              <h2>Contacto</h2>
+            </Button>
           </NavLink>
         </div>
-        <div className="menu">
-          <ul>
-            <li>
-              <NavLink exact to="/"><i className="fa fa-home"></i></NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/products"><i className="fa fa-shopping-bag"></i></NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/cart"><i className="fa fa-shopping-cart"></i></NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/login"><i className="fa fa-user"></i></NavLink>
-            </li>
-          </ul>
+        <div className="redes">
+          <a href="">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+        <div className="direccion">
+          <p>Calle falsa 123</p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
