@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import productsData from "../imgs/productos.json";
 import { Card, Button } from "react-bootstrap";
-import { useCart } from "../context/CartContext";
-import "../css/ProductCard.css";
+import "../css/SouvenirCard.css";
 
-const ProductCard = ({ productId }) => {
-  const { addToCart } = useCart();
+const SouvenirCard = ({ productId }) => {
+  const [cartCount, setCartCount] = useState(0); // Estado para mantener el número de elementos en el carrito
+
   const product = productsData.find((product) => product.id === productId);
 
   if (!product) {
     return <div>No se encontró el producto.</div>;
   }
 
-  if (product.category === "Cafe") {
+  if (product.category === "Cafetera" || product.category === "Regalo") {
+    const addToCart = () => {
+      setCartCount(cartCount + 1); // Aumenta el número de elementos en el carrito
+    };
+
     return (
-      <Card className="product-card" key={product.id}>
+      <Card className="souvenir-card" key={product.id}>
         <Link to={`/products/${product.id}`}>
           <Card.Img
             className="product-image"
@@ -30,10 +34,21 @@ const ProductCard = ({ productId }) => {
             <Card.Text>Marca: {product.brand}</Card.Text>
             <Card.Text>Stock: {product.countInStock}</Card.Text>
           </Card.Body>
+          <Button
+            variant="primary"
+            size="lg"
+            block
+            className="add-to-cart-button"
+            onClick={addToCart} // Llama a addToCart cuando se hace clic en el botón
+          >
+            Agregar al Carrito
+          </Button>
         </Link>
-        <Button onClick={() => addToCart(product)}>Añadir al carrito</Button>
+        <div className="cart-count">{cartCount}</div> {/* Muestra el número de elementos en el carrito */}
       </Card>
     );
   }
 };
-export default ProductCard;
+
+export default SouvenirCard;
+

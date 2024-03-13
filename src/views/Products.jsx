@@ -1,11 +1,20 @@
 import React from "react";
+import { Row, Col } from "react-bootstrap";
+import ProductCard from "../components/common/ProductCard";
+import productsData from "../components/imgs/productos.json";
+import "../css/Products.css";
 
 const Products = () => {
   return (
-    <div>
-      <h2>Productos</h2>
-      {/* Contenido de la página de productos */}
-    </div>
+    <div className="products">
+    <Row xs={1} md={3} lg={5} className=" d-flex g-3">
+      {productsData.map((product) => (
+        <Col key={product.id}>
+          <ProductCard productId={product.id} />
+        </Col>
+      ))}
+    </Row>
+  </div>
   );
 };
 

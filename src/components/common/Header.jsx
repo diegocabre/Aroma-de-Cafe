@@ -7,8 +7,10 @@ import { NavDropdown } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
+import { useCart } from "../context/CartContext";
 
 const Header = () => {
+  const { cart } = useCart();
   return (
     <header>
       <nav>
@@ -19,11 +21,11 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <NavDropdown title="SHOP" id="basic-nav-dropdown">
-                      <NavDropdown.Item href="/products/1">
-                        <p>Café Brasil</p>
+                      <NavDropdown.Item href="/souvenirs">
+                        <p>Regalos</p>
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="/products/2">
-                        <p>Café Francés</p>
+                      <NavDropdown.Item href="/products/">
+                        <p>Productos</p>
                       </NavDropdown.Item>
                       <NavDropdown.Item href="/products/3"></NavDropdown.Item>
                       <NavDropdown.Item href="/products/4"></NavDropdown.Item>
@@ -41,14 +43,12 @@ const Header = () => {
         </NavLink>
       </div>
       <div className="icons">
-{/*         <NavLink to="/login">
-          <i className="fas fa-user"></i>
-        </NavLink> */}
         <NavLink to="/register">
           <i className="fas fa-user-plus"></i>
         </NavLink>
         <NavLink to="/cart">
           <i className="fas fa-shopping-cart"></i>
+          {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
         </NavLink>
       </div>
     </header>
