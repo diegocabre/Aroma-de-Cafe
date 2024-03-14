@@ -9,9 +9,9 @@ export default function Home() {
         <div>
           <h1>Descubre el Mejor Café</h1>
         </div>
-        <div>
-          <img src={granos} alt="" />
-        </div>
+       { <div>
+          <img className="granos" src={granos} alt="" />
+        </div>}
       </div>
       <div>
         <Carousel />

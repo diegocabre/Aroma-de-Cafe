@@ -12,6 +12,7 @@ import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
 import { ProductProvider } from "./components/context/ProductContext";
 import { CartProvider } from "./components/context/CartContext";
+import Checkout from "./views/Checkout";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
                 element={<SouvenirDetailPage />}
               />
               <Route exact path="/cart" element={<CartPage />} />
+              <Route exact path="/checkout" element={<Checkout />} />
               <Route exact path="/login" element={<LoginPage />} />
               <Route exact path="/register" element={<RegisterPage />} />
             </Routes>

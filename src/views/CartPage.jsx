@@ -1,8 +1,14 @@
 import React from "react";
 import { useCart } from "../components/context/CartContext";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const CartPage = () => {
   const { cart } = useCart();
+
+  const calculatesubtotal = () => {
+    return cart.reduce((subtotal, product) => subtotal + product.price, 0);    
+  };
 
   return (
     <div>
@@ -16,19 +22,12 @@ const CartPage = () => {
               <h2>{product.name}</h2>
               <p>Precio: {product.price}</p>
               <p>Cantidad: {product.quantity}</p>
-              <p>Subtotal: {product.price * product.quantity}</p>
             </div>
           ))}
-          <p>
-            Total:{" "}
-            {cart.reduce(
-              (total, product) => total + product.price * product.quantity,
-              0
-            )}
-          </p>
-          <button>Proceder al Pago</button>
-          <button>Eliminar pedido</button>
-          <button>Seguir Comprando</button>
+          <p>Subtotal: {calculatesubtotal()}</p>
+          <Button variant="primary" as={Link} to="/checkout">Proceder al Pago</Button>
+          <Button variant="primary" as={Link} to="/">Eliminar pedido</Button>
+          <Button variant="primary" as={Link} to="/products">Seguir Comprando</Button>
         </div>
       )}
     </div>

@@ -29,6 +29,10 @@ header {
     color: #140f07;
     text-decoration: none;
   }
+
+  .icons {
+    font-size: 1.5rem; /* Ajusta el tamaño de los íconos */
+  }
   
   .icons a {
     color: #140f07;

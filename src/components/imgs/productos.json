@@ -99,7 +99,6 @@
       "brand": "Expresso",
       "countInStock": 5
   },
-  
   {
       "id": 11,
       "name": "Cafetera Goteo Roja",
@@ -110,7 +109,6 @@
       "brand": "Italiana",
       "countInStock": 5
   },    
-  
   {
       "id": 12,
       "name": "Cafetera Moka",
@@ -121,7 +119,6 @@
       "brand": "Moka",
       "countInStock": 2
   },    
-  
   {
       "id": 13,
       "name": "Cafetera Expresso 6 tazas",
@@ -132,7 +129,6 @@
       "brand": "Expresso",
       "countInStock": 4
   },    
-  
   {
       "id": 14,
       "name": "Cafetera Tradicional",
@@ -143,7 +139,6 @@
       "brand": "Tradicional",
       "countInStock": 3
   },    
-  
   {
       "id": 15,
       "name": "Cafetera Profesional",
@@ -154,7 +149,6 @@
       "brand": "Profesional",
       "countInStock": 8
   },    
-  
   {
       "id": 16,
       "name": "Set de Regalo",
@@ -165,7 +159,6 @@
       "brand": "Aroma de cafe",
       "countInStock": 5
   },    
-  
   {
       "id": 17,
       "name": "Sombrilla",
@@ -176,7 +169,6 @@
       "brand": "Aroma de cafe",
       "countInStock": 3
   },
-
   {
       "id": 18,
       "name": "Gift Card",

@@ -6,8 +6,8 @@ import "../css/SouvenirPage.css";
 
 const SouvenirPage = () => {
   return (
-    <div className="souvenir-page">
-      <Row xs={1} md={3} lg={5} className=" d-flex g-3">
+    <div className="products">
+      <Row xs={1} md={3} lg={5} className="row g-3">
         {productsData.map((product) => (
           <Col key={product.id}>
             <SouvenirCard productId={product.id} />
