@@ -28,7 +28,6 @@ const SouvenirCard = ({ productId }) => {
     return <div>No se encontró el producto.</div>;
   }
 
-  if (product.category === "Cafetera" || product.category === "Regalo") {
     return (
       <Card className="product-card" key={product.id}>
         <Link to={`/souvenirs/${product.id}`} className="product-card-link" />
@@ -52,7 +51,6 @@ const SouvenirCard = ({ productId }) => {
         </Card.Body>
       </Card>
     );
-  }
-};
+  };
 
 export default SouvenirCard;
