@@ -1,4 +1,3 @@
-// /src/components/common/Header.js
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
@@ -12,28 +11,22 @@ const Header = () => {
   const { cart } = useCart();
   return (
     <header>
-      <nav>
-        <ul className="menu">
-          <li>
-            <Navbar expand="lg">
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                  <NavDropdown title="SHOP" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/souvenirs">
-                      <p>Regalos</p>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/products/">
-                      <p>Productos</p>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/products/3"></NavDropdown.Item>
-                    <NavDropdown.Item href="/products/4"></NavDropdown.Item>
-                  </NavDropdown>
-                </Nav>
-              </Navbar.Collapse>
-            </Navbar>
-          </li>
-        </ul>
-      </nav>
+      <Navbar expand="lg">
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <NavDropdown className="dropdown" title="SHOP" id="nav-dropdown" >
+              <NavDropdown.Item href="/souvenirs">
+                <p>Regalos</p>
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/products/">
+                <p>Productos</p>
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/products/3"></NavDropdown.Item>
+              <NavDropdown.Item href="/products/4"></NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
       <div className="logo">
         <NavLink exact to="/">
           <img className="logoimg" src={logo} alt="" />

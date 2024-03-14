@@ -6,10 +6,6 @@ import { Button } from "react-bootstrap";
 const CartPage = () => {
   const { cart } = useCart();
 
-  const calculatesubtotal = () => {
-    return cart.reduce((subtotal, product) => subtotal + product.price, 0);    
-  };
-
   return (
     <div>
       <h1>Carrito de Compras</h1>
@@ -24,7 +20,6 @@ const CartPage = () => {
               <p>Cantidad: {product.quantity}</p>
             </div>
           ))}
-          <p>Subtotal: {calculatesubtotal()}</p>
           <Button variant="primary" as={Link} to="/checkout">Proceder al Pago</Button>
           <Button variant="primary" as={Link} to="/">Eliminar pedido</Button>
           <Button variant="primary" as={Link} to="/products">Seguir Comprando</Button>

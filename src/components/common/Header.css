@@ -1,5 +1,6 @@
-/* /src/components/common/Header.css */
 header {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,18 +12,18 @@ header {
 }
 
 .logoimg {
-  transition: opacity 0.5s ease; /* Transición suave de la opacidad */
-  width: 12rem; /* Ajusta el ancho del logo según sea necesario */
+  transition: opacity 0.5s ease;
+  width: 12rem;
   scroll-behavior: smooth;
   cursor: pointer;
 }
 
 .logoimg.transparent {
-  opacity: 1; /* Opacidad completa */
+  opacity: 1;
 }
 
 .logoimg.scrolled {
-  opacity: 0.5; /* Opacidad reducida al hacer scroll down */
+  opacity: 0.1;
 }
 
 .menu {
@@ -33,7 +34,7 @@ header {
 }
 
 .menu li {
-  margin-right: 1rem; /* Espaciado entre los elementos del menú */
+  margin-right: 1rem;
 }
 
 .menu a {
@@ -42,11 +43,11 @@ header {
 }
 
 .icons {
-  font-size: 1.5rem; /* Ajusta el tamaño de los íconos */
+  font-size: 1.5rem;
 }
 
 .icons a {
   color: #140f07;
   text-decoration: none;
-  margin-left: 1rem; /* Espaciado entre los íconos */
+  margin-left: 1rem;
 }
