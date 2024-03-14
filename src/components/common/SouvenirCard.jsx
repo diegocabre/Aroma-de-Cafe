@@ -30,11 +30,20 @@ const SouvenirCard = ({ productId }) => {
 
     return (
       <Card className="product-card" key={product.id}>
-        <Link to={`/souvenirs/${product.id}`} className="product-card-link" />
-        <Card.Img className="product-image" variant="top" src={product.image} />
+        <Link to={`/souvenirs/${product.id}`} className="product-card-link">
+          <Card.Img
+            className="product-image"
+            variant="top"
+            src={product.image}
+          />
+        </Link>
         <Card.Body>
           <Card.Title>{product.name}</Card.Title>
           <Card.Text>${product.price}</Card.Text>
+          <Card.Text>{product.description}</Card.Text>
+          <Card.Text>Categoria: {product.category}</Card.Text>
+          <Card.Text>Stock: {product.countInStock}</Card.Text>
+          <Card.Text>Marca: {product.brand}</Card.Text>
           <Form.Group controlId="quantity">
             <Form.Label>Cantidad</Form.Label>
             <Form.Control

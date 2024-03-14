@@ -1,42 +1,52 @@
 /* /src/components/common/Header.css */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    color: #140f07;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-  
-  .logo img {
-    width: 150px; /* Ajusta el ancho del logo según sea necesario */
-  }
-  
-  .menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .menu li {
-    margin-right: 1rem; /* Espaciado entre los elementos del menú */
-  }
-  
-  .menu a {
-    color: #140f07;
-    text-decoration: none;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  color: #140f07;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 
-  .icons {
-    font-size: 1.5rem; /* Ajusta el tamaño de los íconos */
-  }
-  
-  .icons a {
-    color: #140f07;
-    text-decoration: none;
-    margin-left: 1rem; /* Espaciado entre los íconos */
-  }
-  
+.logoimg {
+  transition: opacity 0.5s ease; /* Transición suave de la opacidad */
+  width: 12rem; /* Ajusta el ancho del logo según sea necesario */
+  scroll-behavior: smooth;
+  cursor: pointer;
+}
+
+.logoimg.transparent {
+  opacity: 1; /* Opacidad completa */
+}
+
+.logoimg.scrolled {
+  opacity: 0.5; /* Opacidad reducida al hacer scroll down */
+}
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.menu li {
+  margin-right: 1rem; /* Espaciado entre los elementos del menú */
+}
+
+.menu a {
+  color: #140f07;
+  text-decoration: none;
+}
+
+.icons {
+  font-size: 1.5rem; /* Ajusta el tamaño de los íconos */
+}
+
+.icons a {
+  color: #140f07;
+  text-decoration: none;
+  margin-left: 1rem; /* Espaciado entre los íconos */
+}
