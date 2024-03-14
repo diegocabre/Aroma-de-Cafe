@@ -1,25 +1,40 @@
-// CartContext.js
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (product, quantity) => {
-    const existingProduct = cart.findIndex((p) => p.id === product.id);
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
 
-    if (existingProduct !== -1) {
+  const saveCartToLocalStorage = (cart) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  const addToCart = (product, quantity) => {
+    const existingProductIndex = cart.findIndex((p) => p.id === product.id);
+
+    if (existingProductIndex !== -1) {
       const updatedCart = [...cart];
-      updatedCart[existingProduct].quantity += quantity;
+      updatedCart[existingProductIndex].quantity += quantity;
       setCart(updatedCart);
+      saveCartToLocalStorage(updatedCart);
     } else {
-      setCart([...cart, { ...product, quantity: quantity }]);
+      const updatedCart = [...cart, { ...product, quantity: quantity }];
+      setCart(updatedCart);
+      saveCartToLocalStorage(updatedCart);
     }
   };
 
   const removeFromCart = (productId) => {
-    setCart(cart.filter((product) => product.id !== productId));
+    const updatedCart = cart.filter((product) => product.id !== productId);
+    setCart(updatedCart);
+    saveCartToLocalStorage(updatedCart);
   };
 
   return (
