@@ -8,10 +8,12 @@ const SouvenirPage = () => {
   return (
     <div className="products">
       <Row xs={1} md={3} lg={5} className="row g-3">
-        {productsData.map((product) => ( 
-          <Col key={product.id}>
-            <SouvenirCard productId={product.id} />
-          </Col>
+        {productsData.map((product) => (
+          product.category === "Cafetera" || product.category === "Regalo" ? (
+            <Col key={product.id}>
+              <SouvenirCard productId={product.id} />
+            </Col>
+          ) : null
         ))}
       </Row>
     </div>
