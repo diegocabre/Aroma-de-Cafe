@@ -1,9 +1,12 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import "../css/Register.css";
 
 function Register() {
   return (
+    <div className="form-container">
+      <h1>Registrate</h1>
     <Form>
       <Form.Group className="mb-3" controlId="formBasicName">
         <Form.Label>Nombre</Form.Label>
@@ -28,6 +31,7 @@ function Register() {
         ya tienes una cuenta? <a href="/login">Inicia Sesión</a>
       </p>
     </Form>
+    </div>
   );
 }
 

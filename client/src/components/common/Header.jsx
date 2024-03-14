@@ -12,17 +12,15 @@ const Header = () => {
   return (
     <header>
       <Navbar expand="lg">
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown className="dropdown" title="SHOP" id="nav-dropdown" >
+            <NavDropdown className="dropdown" title="SHOP" id="nav-dropdown">
               <NavDropdown.Item href="/souvenirs">
-                <p>Regalos</p>
+                <p className="dropdown-item">Regalos</p>
               </NavDropdown.Item>
               <NavDropdown.Item href="/products/">
-                <p>Productos</p>
+                <p className="dropdown-item">Productos</p>
               </NavDropdown.Item>
-              <NavDropdown.Item href="/products/3"></NavDropdown.Item>
-              <NavDropdown.Item href="/products/4"></NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

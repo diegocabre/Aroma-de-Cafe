@@ -14,7 +14,6 @@ header {
 .logoimg {
   transition: opacity 0.5s ease;
   width: 12rem;
-  scroll-behavior: smooth;
   cursor: pointer;
 }
 
@@ -26,28 +25,24 @@ header {
   opacity: 0.1;
 }
 
-.menu {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.menu li {
-  margin-right: 1rem;
-}
-
-.menu a {
-  color: #140f07;
-  text-decoration: none;
-}
-
 .icons {
-  font-size: 1.5rem;
+  display: flex;
+  gap: 20px;
 }
 
-.icons a {
+.icons i {
   color: #140f07;
-  text-decoration: none;
-  margin-left: 1rem;
+  cursor: pointer;
+  transition: color 0.5s ease;
+  font-size: 2rem;
+}
+
+.icons i:hover {
+  color: #f7da18;
+}
+
+.dropdown {
+  color: #140f07;
+  font-size: 40px;
+  cursor: pointer;
 }

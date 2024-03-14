@@ -1,0 +1,16 @@
+.back-button {
+  margin-bottom: 20px; /* Espacio entre el botón y el contenido */
+}
+
+.back-button .btn {
+  background-color: #ad960b; /* Color de fondo del botón */
+  border-color: #ad960b; /* Color del borde del botón */
+  color: #fff; /* Color del texto del botón */
+  padding: 10px 20px; /* Ajusta el padding para que el botón sea más grande */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.back-button .btn:hover {
+  background-color: #695900; /* Cambia el color de fondo al pasar el mouse sobre el botón */
+  border-color: #695900; /* Cambia el color del borde al pasar el mouse sobre el botón */
+}
