@@ -151,6 +151,7 @@ VALUES
 (5, 'Café Jungle', 'Café de la montaña', 7.99, 40, 1, '1', '../database/img/img5.jpg', '2024-03-17 10:20:00', '2024-03-17 10:20:00');`
 
 const getDataQuery =`SELECT * FROM productos LIMIT %s OFFSET %s`
+const getDataByIdQuery =`SELECT * FROM productos WHERE id_producto = %s`
 
-module.exports = {getDataQuery, createTableCarrito, createTableProductos, createTableCategorias, 
+module.exports = {getDataQuery,getDataByIdQuery, createTableCarrito, createTableProductos, createTableCategorias, 
     createTableMarcas, createTableOrdenes,createTableRoles, createTableUsers, initial_setup, insertDataIntoProductos}

@@ -1,3 +1,3 @@
-const getData = require('./getDataController/index');
+const {getData,getDataById} = require('./getDataController/index');
 
-module.exports = {getData}
+module.exports = {getData, getDataById}

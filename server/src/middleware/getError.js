@@ -15,4 +15,16 @@ checkProductos = async(req,res,next)=>{
     }
 }
 
-module.exports = {checkProductos}
+checkProductoById = async(req,res,next)=>{
+    const id = req.params.id;
+    if(id<=0 || !/^\d+$/.test(id)){
+        res.status(400).json({
+            msg:"el valor de id es incorrecto debe ser un número positivo"
+        })
+    }
+    else{
+        next();
+    }
+}
+
+module.exports = {checkProductos,checkProductoById}
