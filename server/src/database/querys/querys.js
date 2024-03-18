@@ -148,7 +148,9 @@ VALUES
 (2, 'Café Frances', 'Café hecho en francia', 3.50, 50, 2, 1, '../database/img/img2.jpg', '2024-03-17 10:05:00', '2024-03-17 10:05:00'),
 (3, 'Café Etiopia', 'Café hecho en etiopia', 6.50, 75, 1, 1, '../database/img/img3.jpg', '2024-03-17 10:10:00', '2024-03-17 10:10:00'),
 (4, 'Café Etiopia 2', 'Café hecho en etiopia', 50.00, 20, 3, 1, '../database/img/img4.jpg', '2024-03-17 10:15:00', '2024-03-17 10:15:00'),
-(5, 'Café Jungle', 'Café de la montaña', 7.99, 40, 1, 'INS', '../database/img/img5.jpg', '2024-03-17 10:20:00', '2024-03-17 10:20:00');`  
+(5, 'Café Jungle', 'Café de la montaña', 7.99, 40, 1, '1', '../database/img/img5.jpg', '2024-03-17 10:20:00', '2024-03-17 10:20:00');`
 
-module.exports = {createTableCarrito, createTableProductos, createTableCategorias, 
+const getDataQuery =`SELECT * FROM productos LIMIT %s OFFSET %s`
+
+module.exports = {getDataQuery, createTableCarrito, createTableProductos, createTableCategorias, 
     createTableMarcas, createTableOrdenes,createTableRoles, createTableUsers, initial_setup, insertDataIntoProductos}

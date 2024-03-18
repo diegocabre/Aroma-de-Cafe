@@ -1,6 +1,8 @@
 const routes = require('express').Router();
+const productoRouter = require('./productoRoute/index')
 
-routes.use('/',(req,res)=>{
-    console.log("hola desde ruta /")
-})
+
+routes.use('/productos',productoRouter)
+
+
 module.exports =routes;
