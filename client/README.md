@@ -14,3 +14,7 @@ Colores utilizados:
 .color3 {color: #695900;}
 .color4 {color: #ad960b;}
 .color5 {color: #f7da18;}
+
+font-family: 'Bebas Neue', cursive;
+
+
