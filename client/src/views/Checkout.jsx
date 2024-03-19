@@ -2,7 +2,7 @@ import React from "react";
 import { useCart } from "../components/context/CartContext";
 import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
-import "../css/Checkout.css";
+import "../components/css/Checkout.css";
 
 const CheckoutPage = () => {
   const { cart } = useCart();

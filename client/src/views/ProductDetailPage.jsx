@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import productsData from "../components/imgs/productos.json";
 import ProductCard from "../components/common/ProductCard";
-import "../css/ProductDetailPage.css";
+import "../components/css/ProductDetailPage.css";
 
 const ProductDetailPage = () => {
   const { id } = useParams(); // Recupera el ID del producto de la URL

@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import ProductCard from "../components/common/ProductCard";
 import productsData from "../components/imgs/productos.json";
-import "../css/Products.css";
+import "../components/css/Products.css";
 
 const Products = () => {
   return (

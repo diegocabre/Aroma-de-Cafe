@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import SouvenirCard from "../components/common/SouvenirCard";
 import productsData from "../components/imgs/productos.json";
-import "../css/SouvenirPage.css";
+import "../components/css/SouvenirPage.css";
 
 const SouvenirPage = () => {
   return (
