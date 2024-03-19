@@ -5,7 +5,6 @@ import productData from "../../components/imgs/productos.json";
 import "../css/Carousel.css";
 
 function DarkVariantExample() {
-  // Función para dividir los productos en grupos de 3 para mostrar en cada diapositiva del carrusel
   const chunkProducts = (array, size) => {
     const chunkedArr = [];
     for (let i = 0; i < array.length; i += size) {
@@ -14,7 +13,6 @@ function DarkVariantExample() {
     return chunkedArr;
   };
 
-  // Dividir los productos en grupos de 3
   const productsChunks = chunkProducts(productData, 3);
 
   return (
