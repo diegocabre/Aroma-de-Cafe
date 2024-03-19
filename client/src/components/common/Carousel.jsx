@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Carousel, Row, Col } from "react-bootstrap";
+import { Carousel, Row, Col, Button } from "react-bootstrap";
 import productData from "../../components/imgs/productos.json";
 import "../css/Carousel.css";
 
@@ -16,29 +16,31 @@ function DarkVariantExample() {
   const productsChunks = chunkProducts(productData, 3);
 
   return (
-    <Carousel className="carousel d-none d-lg-block" data-bs-theme="dark">
-      {productsChunks.map((chunk, index) => (
-        <Carousel.Item key={index} interval={5000} className="carousel-item">
-          <Row className="justify-content-center">
-            {chunk.map((product) => (
-              <Col
-                key={product.id}
-                md={4}
-                sm={6}
-                lg={4}
-                className="text-center"
-              >
-                <NavLink to={`/product/${product.id}`} className="d-block">
-                  <img src={product.image} alt={product.name} />
-                  <p className="mt-2 mb-0">{product.name}</p>
-                  <p className="mt-1">${product.price}</p>
-                </NavLink>
-              </Col>
-            ))}
-          </Row>
-        </Carousel.Item>
-      ))}
-    </Carousel>
+    <div className="carousel-container">
+      <Carousel className="carousel d-none d-lg-block" data-bs-theme="dark">
+        {productsChunks.map((chunk, index) => (
+          <Carousel.Item key={index} interval={5000} className="carousel-item">
+            <Row className="justify-content-center">
+              {chunk.map((product) => (
+                <Col
+                  key={product.id}
+                  md={4}
+                  sm={6}
+                  lg={4}
+                  className="text-center"
+                >
+                  <NavLink to={`/product/${product.id}`} className="d-block">
+                    <img src={product.image} alt={product.name} />
+                    <p className="mt-2 mb-0">{product.name}</p>
+                    <p className="mt-1">${product.price}</p>
+                  </NavLink>
+                </Col>
+              ))}
+            </Row>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </div>
   );
 }
 

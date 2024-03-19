@@ -14,9 +14,9 @@ export default function Home() {
           <img className="granos d-none d-lg-block" src={granos} alt="" />
         </div>}
       </div>
-      <div>
+{      <div>
         <Carousel />      
-      </div>
+      </div>}
       <div>
         <History />
       </div>
