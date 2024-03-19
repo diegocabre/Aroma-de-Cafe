@@ -1,53 +1,71 @@
-footer {
-  background-color: #000;
-  color: #fff;
-  padding: 20px;
-  text-align: left;
-  font-size: 16px;
+/* Footer.css */
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #333;
+  padding: 20px;
 }
 
-.boton {
-  background-color: #140f07;
-  border-radius: 10px;
-  border: none;
-  color: #f7da18;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+.contacto {
+  order: 2;
 }
 
 .redes {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.redes a {
-  text-decoration: none;
+  order: 1;
 }
 
 .redes i {
-  color: #fff;
-  width: 30px;
-  height: 30px;
+  margin-right: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.redes i:hover {
+  text-decoration: underline;
 }
 
 .direccion {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: 16px;
-  margin-top: 10px;
+  order: 3;
 }
 
 .direccion p {
-  margin: 0;
-  color: #fff;
+  color: white;
+}
+
+.direccion p:hover {
+  text-decoration: underline;
+}
+
+.boton {
+  background-color: white;
+  font-size: 24px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: #f7da18; 
+}
+
+.boton:active {
+  background-color: #ddd;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .contacto,
+  .redes,
+  .direccion {
+    margin-bottom: 20px;
+  }
+
+  .boton {
+    width: 100%;
+  }
 }
