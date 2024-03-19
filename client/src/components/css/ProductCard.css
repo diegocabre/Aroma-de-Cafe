@@ -1,4 +1,7 @@
+/* ProductCard.css */
+
 .product-card {
+  /* Estilos para la tarjeta de producto */
   font-family: "Bebas Neue", cursive;
   border: 1px solid #ad960b;
   border-radius: 8px;
@@ -17,6 +20,8 @@
 
 .product-card .product-image {
   width: 100%;
+  max-height: 500px;
+  object-fit: cover; 
   border-radius: 8px;
   margin-bottom: 15px;
 }

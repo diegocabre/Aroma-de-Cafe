@@ -6,18 +6,15 @@ import ProductCard from "../components/common/ProductCard";
 import "../components/css/ProductDetailPage.css";
 
 const ProductDetailPage = () => {
-  const { id } = useParams(); // Recupera el ID del producto de la URL
-
-  // Busca el producto correspondiente por su ID
+  const { id } = useParams();
   const product = productsData.find((product) => product.id === parseInt(id));
-
   return (
     <div>
       <Link to="/products" className="back-button">
         <Button variant="primary">Volver</Button>
       </Link>
       {product ? (
-        <ProductCard productId={product.id} /> // Renderiza el ProductCard con el producto encontrado
+        <ProductCard productId={product.id} />
       ) : (
         <div>No se encontró el producto.</div>
       )}
@@ -26,4 +23,3 @@ const ProductDetailPage = () => {
 };
 
 export default ProductDetailPage;
-
