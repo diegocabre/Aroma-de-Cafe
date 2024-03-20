@@ -1,4 +1,4 @@
-![logo](https://github.com/diegocabre/Aroma-de-Cafe/assets/7809145/245d46a7-8608-4dc6-9060-2ca069366082)<h1 align = 'center'>Aroma de Café<h1>
+<h1 align = 'center'>Aroma de Café<h1>
 
 Colores utilizados:
 
