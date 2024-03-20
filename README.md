@@ -5,6 +5,8 @@
 <h2>Modelo de datos</h2>
 Para abarcar una problemática es importante tener un modelo de datos ajustado a la necesidad del negocio a resolver. Además, es valioso para ordenar la información de manera eficiente y para garantizar la integralidad de los datos.
 
+<img src='./client/src/components/imgs/modelo_datos.png'/>
+
 <h3>Tablas</h3>
 <p>Nuestro ecommerce cuenta con las tablas: usuarios,productos,categorias,marcas,carrito,ordenes y roles.
 </p>
