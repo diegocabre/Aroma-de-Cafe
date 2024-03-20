@@ -5,9 +5,10 @@ import { Button } from "react-bootstrap";
 import "../components/css/CartPage.css";
 
 const CartPage = () => {
-  const { cart } = useCart();
+  const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
+    useCart();
 
-  const handClearCart = () => {
+  const handleClearCart = () => {
     localStorage.removeItem("cart");
     window.location.reload();
     window.location.href = "/products";
@@ -25,13 +26,33 @@ const CartPage = () => {
               <h2>{product.name}</h2>
               <p>Precio: {product.price}</p>
               <p>Cantidad: {product.quantity}</p>
+              <div className="cart-item-buttons">
+                <Button
+                  variant="danger"
+                  onClick={() => removeFromCart(product.id)}
+                >
+                  Eliminar
+                </Button>
+                <Button
+                  variant="success"
+                  onClick={() => increaseQuantity(product.id)}
+                >
+                  +
+                </Button>
+                <Button
+                  variant="warning"
+                  onClick={() => decreaseQuantity(product.id)}
+                >
+                  -
+                </Button>
+              </div>
             </div>
           ))}
           <div className="cart-buttons">
             <Button variant="primary" as={Link} to="/checkout">
               Proceder al Pago
             </Button>
-            <Button variant="primary" onClick={handClearCart}>
+            <Button variant="primary" onClick={handleClearCart}>
               Eliminar pedido
             </Button>
             <Button variant="primary" as={Link} to="/products">

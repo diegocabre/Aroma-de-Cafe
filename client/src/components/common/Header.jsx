@@ -49,7 +49,7 @@ const Header = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <div className={`logo ${scroll ? "scrolled" : ""}`}>
+      <div className={`logo ${scroll ? "scrolled" : ""}`} id="logo-container">
         <NavLink exact to="/">
           <img className="logoimg" src={logo} alt="" />
         </NavLink>

@@ -37,8 +37,36 @@ export const CartProvider = ({ children }) => {
     saveCartToLocalStorage(updatedCart);
   };
 
+  const increaseQuantity = (productId) => {
+    const updatedCart = cart.map((product) =>
+      product.id === productId
+        ? { ...product, quantity: product.quantity + 1 }
+        : product
+    );
+    setCart(updatedCart);
+    saveCartToLocalStorage(updatedCart);
+  };
+
+  const decreaseQuantity = (productId) => {
+    const updatedCart = cart.map((product) =>
+      product.id === productId && product.quantity > 1
+        ? { ...product, quantity: product.quantity - 1 }
+        : product
+    );
+    setCart(updatedCart);
+    saveCartToLocalStorage(updatedCart);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        increaseQuantity,
+        decreaseQuantity,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
