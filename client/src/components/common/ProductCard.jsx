@@ -30,7 +30,7 @@ const ProductCard = ({ productId }) => {
 
   if (product.category === "Cafe") {
     return (
-      <Card className="product-card" key={product.id}>
+      <Card className="product-card d-flex flex-column h-100" key={product.id}>
         <Link to={`/products/${product.id}`}>
           <Card.Img
             className="product-image"
@@ -38,9 +38,9 @@ const ProductCard = ({ productId }) => {
             src={product.image}
           />
         </Link>
-        <Card.Title>{product.name}</Card.Title>
-        <Card.Text>{product.description}</Card.Text>
         <Card.Body>
+          <Card.Title className="product-title">{product.name}</Card.Title>
+          <Card.Text>{product.description}</Card.Text>
           <Card.Text className="product-price">
             Precio: $ {product.price}
           </Card.Text>
@@ -64,9 +64,17 @@ const ProductCard = ({ productId }) => {
             />
           </Form.Group>
         </Card.Body>
-        <Button onClick={() => handleAddToCart()}>Añadir al carrito</Button>
+        <Card.Footer>
+          <Button
+            className="btn-add-to-cart w-100"
+            onClick={() => handleAddToCart()}
+          >
+            Añadir al carrito
+          </Button>
+        </Card.Footer>
       </Card>
     );
   }
 };
+
 export default ProductCard;

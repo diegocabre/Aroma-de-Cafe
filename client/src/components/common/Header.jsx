@@ -1,6 +1,7 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import "./Header.css";
+import "../css/Header.css";
 import logo from "../imgs/logo.png";
 import { NavDropdown } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
@@ -9,12 +10,35 @@ import { useCart } from "../context/CartContext";
 
 const Header = () => {
   const { cart } = useCart();
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <header>
       <Navbar expand="lg">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown className="dropdown" title="SHOP" id="nav-dropdown">
+            <NavDropdown
+              className="dropdown"
+              title="SHOP"
+              id="basic-nav-dropdown"
+            >
               <NavDropdown.Item href="/souvenirs">
                 <p className="dropdown-item">Regalos</p>
               </NavDropdown.Item>
@@ -25,7 +49,7 @@ const Header = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <div className="logo">
+      <div className={`logo ${scroll ? "scrolled" : ""}`} id="logo-container">
         <NavLink exact to="/">
           <img className="logoimg" src={logo} alt="" />
         </NavLink>
@@ -43,6 +67,8 @@ const Header = () => {
   );
 };
 
+export default Header;
+
 window.addEventListener("scroll", () => {
   const image = document.querySelector(".logoimg");
   if (window.scrollY > 0) {
@@ -51,5 +77,3 @@ window.addEventListener("scroll", () => {
     image.classList.remove("scrolled");
   }
 });
-
-export default Header;

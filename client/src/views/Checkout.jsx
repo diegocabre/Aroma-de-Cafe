@@ -2,12 +2,12 @@ import React from "react";
 import { useCart } from "../components/context/CartContext";
 import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
-import "../css/Checkout.css";
+import "../components/css/Checkout.css";
 
 const CheckoutPage = () => {
   const { cart } = useCart();
 
-  // Función para calcular el subtotal
+  
   const calculateSubtotal = () => {
     return cart.reduce(
       (subtotal, product) => subtotal + product.price * product.quantity,
@@ -15,9 +15,8 @@ const CheckoutPage = () => {
     );
   };
 
-  // Función para procesar el pago
   const handleCheckout = () => {
-    // Aquí puedes implementar la lógica para procesar el pago, por ejemplo, con MercadoPago
+    
   };
 
   return (

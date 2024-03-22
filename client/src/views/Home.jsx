@@ -2,6 +2,7 @@ import React from "react";
 import "../components/css/Home.css";
 import granos from "../components/imgs/granos.png";
 import Carousel from "../components/common/Carousel";
+import History from "./History";
 export default function Home() {
   return (
     <section >
@@ -10,11 +11,14 @@ export default function Home() {
           <h1>Descubre el Mejor Café</h1>
         </div>
        { <div>
-          <img className="granos" src={granos} alt="" />
+          <img className="granos d-none d-lg-block" src={granos} alt="" />
         </div>}
       </div>
+{      <div>
+        <Carousel />      
+      </div>}
       <div>
-        <Carousel />
+        <History />
       </div>
     </section>
   );
