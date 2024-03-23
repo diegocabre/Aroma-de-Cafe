@@ -152,12 +152,6 @@ const initial_setup = `CREATE TABLE IF NOT EXISTS initial_setup (
 
 const insertDataIntoProductos = `INSERT INTO productos (id_producto, nombre_producto, descripcion, precio, stock, id_categoria, id_marca, imagen_producto, fecha_creacion, fecha_actualizacion)
 VALUES
-(1, 'Café Brasil', 'Café hecho en Brasil', 5.99, 100, 1, 1, '../database/img/img1.jpg', '2024-03-17 10:00:00', '2024-03-17 10:00:00'),
-(2, 'Café Frances', 'Café hecho en francia', 3.50, 50, 2, 1, '../database/img/img2.jpg', '2024-03-17 10:05:00', '2024-03-17 10:05:00'),
-(3, 'Café Etiopia', 'Café hecho en etiopia', 6.50, 75, 1, 1, '../database/img/img3.jpg', '2024-03-17 10:10:00', '2024-03-17 10:10:00'),
-(4, 'Café Etiopia 2', 'Café hecho en etiopia', 50.00, 20, 3, 1, '../database/img/img4.jpg', '2024-03-17 10:15:00', '2024-03-17 10:15:00'),
-(5, 'Café Jungle', 'Café de la montaña', 7.99, 40, 1, 'INS', '../database/img/img5.jpg', '2024-03-17 10:20:00', '2024-03-17 10:20:00'),
-
 (DEFAULT, 'Café Brasil', 'Café arabico Incapto', 5490, 45, 1, 1, '/src/components/imgs/brasil.png', CURRENT_DATE, CURRENT_DATE),
 (DEFAULT, 'Café Jo', 'Café hecho en Francia', 1504, 23, 1, 3, '/src/components/imgs/frances.jpg', CURRENT_DATE, CURRENT_DATE),
 (DEFAULT, 'Café Etipía', 'Café origen Limu, Moplaco', 2390, 20, 1, 1, '/src/components/imgs/etiopia.png', CURRENT_DATE, CURRENT_DATE),
