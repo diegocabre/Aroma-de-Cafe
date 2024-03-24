@@ -3,6 +3,6 @@ const {validationFieldLogin, validateCredentials} = require('../../middleware/in
 const {login}=require('../../controllers/index')
 
 
-router.get('/',validationFieldLogin,validateCredentials,login)
+router.post('/',validationFieldLogin,validateCredentials,login)
 
 module.exports = router

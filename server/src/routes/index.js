@@ -5,6 +5,6 @@ const RegisterRoute = require('./RegisterRoute/index')
 
 routes.use('/productos',productoRouter);
 routes.use('/login', loginRoute);
-routes.use('/registro',RegisterRoute)
+routes.use('/registro',RegisterRoute);
 
 module.exports =routes;

@@ -12,9 +12,9 @@ const userRegistrer = async (req,res)=>{
         const values =[name,name+' '+lastName,2,email,passwordEncriptada,"true"]
         const query = format(insertUser,...values);
         await db.query(query);
-        res.status(200).json({msg: "usuario registrado correctamente"})
+        res.status(201).json({msg: "usuario registrado correctamente"})
     } catch (error) {
-        res.status(400).json(error)
+        res.status(500).json(error)
     }
 }
 

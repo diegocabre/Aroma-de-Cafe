@@ -40,7 +40,7 @@ const validationFieldRegistrer = [
         }
 		
 	} catch (error) {
-		res.status(400).send({error: error.array()})
+		res.status(500).send({error: error.array()})
 		
 	}
 }
@@ -52,7 +52,7 @@ const validationCorreo = async(req,res,next)=>{
 		const query = format(getCorreo,...value)
 		const data = await db.query(query)
 		if(data.rows.length){
-			res.status(409).json({
+			res.status(400).json({
 				error: "bad request",
 				msg: "El usuario ya está registrado"
 			})

@@ -20,3 +20,77 @@ Para abarcar una problemática es importante tener un modelo de datos ajustado a
 <p>Marcas tiene una relación de 1 es a muchos con productos, se manifiesta en el campo id_marca. Cada producto tiene una marca y una marca puede estar asociado a 1 o muchos productos</p>
 
 <p>Una de nuestras tablas que ponemos denominar como critica es Ordenes. Esta tabla proporciona información sobre cuándo ocurrío la transacción, esto nos permitiría analizar las ventas y dar seguimiento de los pedidos.</p>
+
+
+
+--- SERVIDOR 
+
+Este servidor backend proporciona una API RESTful para gestionar ciertos recursos.
+
+Rutas disponibles 
+
+`GET /productos`
+
+Descripción: Obtiene todos los productos.
+Parámetros de consulta:  limit, page, order_by, por defecto están asignados los siguientes valores, 10, 1 y id_producto-ASC.
+Para el caso de limit  se aceptan solo valores númericos mayores a cero.
+Para el caso de page se aceptan solo valores númericos mayores a cero.
+Para el caso de order_by solo se aceptan los siguientes dos campos: el primero se aceptan ordenamiento debe contener id_producto, categoria o precio, para el segundo campo: ASC o DESC. Estos campos deben estar separados por el caracter "-". ejemplo: id_producto-ASC
+Respuesta exitosa:
+Código 200
+Cuerpo de respuesta: Array de objetos.
+Respuesta de error:
+Código 400: Error por mala solicitud.
+Código 400: Error interno del servidor.
+
+`GET /productos/$id`
+
+Descripción: Obtiene el producto enviado por la url $id.
+Parámetros de consulta: Ninguno.
+Respuesta exitosa:
+Código 200
+Cuerpo de respuesta: Array de producto.
+Respuesta de error:
+Código 400: Error id no valido.
+
+`POST /login`
+
+Descripción: Autenticación de usuario para obtener un token de acceso.
+Parámetros de entrada:
+email: Correo electrónico del usuario.
+contraseña: Contraseña del usuario.
+Respuesta exitosa:
+Código 200
+Cuerpo de respuesta: Objeto con el token de acceso, nombre de usuario y correo electrónico.
+json
+Copy code
+
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "nombre_usuario": "UsuarioEjemplo",
+  "correo": "usuario@example.com"
+
+Respuesta de error:
+Código 404: Campos invalidos.
+Código 401: Credenciales inválidas.
+Código 500: Error interno del servidor.
+
+`POST /registro`
+
+Descripción: Registro de un nuevo usuario.
+Parámetros de entrada:
+name: Nombre del usuario.
+lastName: Apellido del usuario.
+email: Correo electrónico del usuario.
+contraseña: Contraseña del usuario.
+contraseñaConfirm: Confirmación de la contraseña del usuario.
+Respuesta exitosa:
+Código 201
+Cuerpo de respuesta: Objeto con el mensaje de éxito.
+json
+Copy code
+{
+  "mensaje": "Usuario registrado correctamente"
+}
+Respuesta de error:
+Código 400: Error de validación en los datos enviados.
+Código 500: Error interno del servidor.
