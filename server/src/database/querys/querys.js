@@ -152,3 +152,64 @@ const initial_setup = `CREATE TABLE IF NOT EXISTS initial_setup (
 
 const insertDataIntoProductos = `INSERT INTO productos (id_producto, nombre_producto, descripcion, precio, stock, id_categoria, id_marca, imagen_producto, fecha_creacion, fecha_actualizacion)
 VALUES
+(DEFAULT, 'Café Brasil', 'Café arabico Incapto', 5490, 45, 1, 1, '/src/components/imgs/brasil.png', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Café Jo', 'Café hecho en Francia', 1504, 23, 1, 3, '/src/components/imgs/frances.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Café Etipía', 'Café origen Limu, Moplaco', 2390, 20, 1, 1, '/src/components/imgs/etiopia.png', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Café Cubico', 'Café arabico de Etiopía', 3290, 5, 1, 2, '/src/components/imgs/etiopia2.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Café Jungle Blend', 'Café origen Guatemata - Perú', 4500, 13, 1, 1, '/src/components/imgs/brasil.png', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Café Tanzanian peaBerry', 'Café union entre arabico y robusta', 6070, 3, 1, 5, '/src/components/imgs/brasil.png', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Café Hawahan kona', 'Café arabico extra fancy', 3500, 38, 1, 1, '/src/components/imgs/Volcanica.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Café Death Wish', 'Café arabico medium roast', 4990, 12, 1, 4, '/src/components/imgs/Volcanica.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Cafetera Turca', 'Cafetera Turca', 15000, 12, 2, 7, '/src/components/imgs/souvenir/cafeteras-turcas-1-768x644.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Cafetera Amarilla', 'Cafetera Amarilla', 230000, 3, 2, 7, '/src/components/imgs/souvenir/Cafetera amarilla expreso.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Cafetera Roja', 'Cafetera Roja por goteo', 69000, 12, 2, 7, '/src/components/imgs/souvenir/cafetera-goteo-roja.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Cafetera Alicia', 'Cafetera Moka', 4650, 9, 2, 7, '/src/components/imgs/souvenir/cafetera-moka.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Cafetera Italiana', 'Cafetera italiana 6 tazas', 25900, 3, 2, 7, '/src/components/imgs/souvenir/cafetera-express-6-tazas.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Cafetera Expresso Tradicional', 'Cafetera Expresso Tradicional', 340000, 3, 2, 7, '/src/components/imgs/souvenir/cafetera.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Cafetera por goteo - vidrio', 'Cafetera por goteo', 30000, 22, 2, 8, '/src/components/imgs/souvenir/cafeteras-que-utilizan-los-profesionales-1024x1024.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Set de Regalo', 'Set de regalo que incluye mochila y gorra', 25500, 11, 2, 7, '/src/components/imgs/souvenir/GORRA_JPG-2.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Paraguas', 'Paraguas', 6500, 130, 2, 7, '/src/components/imgs/souvenir/SOMBRILLA_JPG-5.jpg', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Gift Card', 'Gift Card', 5000, 400, 2, 7, '/src/components/imgs/souvenir/tarjetaregalo.png', CURRENT_DATE, CURRENT_DATE);`;
+
+const insertDataIntoRoles = `INSERT INTO roles (id_rol, nombre_rol,descripcion,permisos,estado_rol,fecha_creacion,fecha_actualizacion) 
+VALUES
+(DEFAULT, 'admin', 'admin', 'totales', true, CURRENT_DATE, CURRENT_DATE ),
+(DEFAULT, 'cliente', 'cliente', 'parciales', true, CURRENT_DATE, CURRENT_DATE );`;
+
+const insertDataIntoMarcas = `INSERT INTO marcas (id_marca, nombre_marca, fecha_creacion, fecha_actualizacion)
+VALUES 
+(DEFAULT, 'Incapto', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Cubico', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Jo', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Death Wish Coffee co', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Fresh Roasted', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Volcanica', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Aroma de café', CURRENT_DATE, CURRENT_DATE),
+(DEFAULT, 'Mc COffee', CURRENT_DATE, CURRENT_DATE);`;
+
+const insertDataIntoCategoria = `INSERT INTO categorias (id_categoria, nombre_categoria, descripcion, imagen, fecha_creacion, fecha_actualizacion) VALUES (DEFAULT, 'Regalos', 'Merchandising y cafeteras', 'src/components/imgs/souvenir/Cafetera amarilla expreso.jpg', CURRENT_DATE, CURRENT_DATE);
+INSERT INTO categorias (id_categoria, nombre_categoria, descripcion, imagen, fecha_creacion, fecha_actualizacion) VALUES (DEFAULT, 'Cafes', 'Cafes', 'src/components/imgs/historiacafeFondo.jpg', CURRENT_DATE, CURRENT_DATE);`;
+
+const getDataQuery =`SELECT * FROM productos ORDER BY %s %s LIMIT %s OFFSET %s`
+const getDataByIdQuery =`SELECT * FROM productos WHERE id_producto = %s`
+
+const getCorreo =`SELECT * FROM usuarios WHERE correo = %s`
+
+
+module.exports = {
+   createTableCarrito,
+   createTableProductos,
+   createTableCategorias,
+   createTableMarcas,
+   createTableOrdenes,
+   createTableRoles,
+   createTableUsers,
+   initial_setup,
+   insertDataIntoProductos,
+   insertDataIntoRoles,
+   insertDataIntoMarcas,
+   insertDataIntoCategoria,
+   getCorreo,
+   getDataByIdQuery,
+   getDataQuery
+};
