@@ -190,6 +190,12 @@ VALUES
 const insertDataIntoCategoria = `INSERT INTO categorias (id_categoria, nombre_categoria, descripcion, imagen, fecha_creacion, fecha_actualizacion) VALUES (DEFAULT, 'Regalos', 'Merchandising y cafeteras', 'src/components/imgs/souvenir/Cafetera amarilla expreso.jpg', CURRENT_DATE, CURRENT_DATE);
 INSERT INTO categorias (id_categoria, nombre_categoria, descripcion, imagen, fecha_creacion, fecha_actualizacion) VALUES (DEFAULT, 'Cafes', 'Cafes', 'src/components/imgs/historiacafeFondo.jpg', CURRENT_DATE, CURRENT_DATE);`;
 
+const getDataQuery =`SELECT * FROM productos ORDER BY %s %s LIMIT %s OFFSET %s`
+const getDataByIdQuery =`SELECT * FROM productos WHERE id_producto = %s`
+
+const getCorreo =`SELECT * FROM usuarios WHERE correo = %s`
+
+
 module.exports = {
    createTableCarrito,
    createTableProductos,
@@ -203,4 +209,7 @@ module.exports = {
    insertDataIntoRoles,
    insertDataIntoMarcas,
    insertDataIntoCategoria,
+   getCorreo,
+   getDataByIdQuery,
+   getDataQuery
 };
