@@ -1,5 +1,5 @@
 [
-    {
+   {
       "id": 1,
       "name": "Cafe Brasil",
       "image": "/src/components/imgs/brasil.png",
@@ -8,8 +8,8 @@
       "category": "Cafe",
       "brand": "Brasil",
       "countInStock": 5
-    },
-    {
+   },
+   {
       "id": 2,
       "name": "Cafe Frances",
       "image": "/src/components/imgs/frances.jpg",
@@ -18,8 +18,8 @@
       "category": "Cafe",
       "brand": "Francia",
       "countInStock": 8
-    },
-    {
+   },
+   {
       "id": 3,
       "name": "Cafe Etiopia",
       "image": "/src/components/imgs/etiopia.png",
@@ -28,8 +28,8 @@
       "category": "Cafe",
       "brand": "Etiopia",
       "countInStock": 3
-    },
-    {
+   },
+   {
       "id": 4,
       "name": "Cafe Etiopia 2",
       "image": "/src/components/imgs/etiopia2.jpg",
@@ -38,8 +38,8 @@
       "category": "Cafe",
       "brand": "Etiopia",
       "countInStock": 3
-    },
-    {
+   },
+   {
       "id": 5,
       "name": "Cafe Jungle",
       "image": "/src/components/imgs/jungle.png",
@@ -48,8 +48,8 @@
       "category": "Cafe",
       "brand": "Jungle",
       "countInStock": 3
-    },
-    {
+   },
+   {
       "id": 6,
       "name": "Cafe Tanzanian",
       "image": "/src/components/imgs/Tanzanian.jpg",
@@ -58,8 +58,8 @@
       "category": "Cafe",
       "brand": "Tanzania",
       "countInStock": 3
-    },
-    {
+   },
+   {
       "id": 7,
       "name": "Cafe Africa",
       "image": "/src/components/imgs/Volcanica.jpg",
@@ -68,8 +68,8 @@
       "category": "Cafe",
       "brand": "Africa",
       "countInStock": 8
-    },
-    {
+   },
+   {
       "id": 8,
       "name": "Café de la muerte",
       "image": "/src/components/imgs/muerte.jpg",
@@ -78,8 +78,8 @@
       "category": "Cafe",
       "brand": "Muerte",
       "countInStock": 8
-    },
-    {
+   },
+   {
       "id": 9,
       "name": "Cafetera Turca",
       "image": "/src/components/imgs/souvenir/cafeteras-turcas-1-768x644.jpg",
@@ -88,8 +88,8 @@
       "category": "Cafetera",
       "brand": "Turca",
       "countInStock": 3
-  },
-  {
+   },
+   {
       "id": 10,
       "name": "Cafetera Amarilla",
       "image": "/src/components/imgs/souvenir/Cafetera amarilla expreso.jpg",
@@ -98,18 +98,18 @@
       "category": "Cafetera",
       "brand": "Expresso",
       "countInStock": 5
-  },
-  {
+   },
+   {
       "id": 11,
       "name": "Cafetera Goteo Roja",
-      "image": "/src/components/imgs/souvenir/Cafetera goteo roja.jpg",
+      "image": "src/components/imgs/souvenir/cafetera-goteo-roja.jpg",
       "price": 100,
       "description": "Cafetera Roja por goteo",
       "category": "Cafetera",
       "brand": "Italiana",
       "countInStock": 5
-  },    
-  {
+   },
+   {
       "id": 12,
       "name": "Cafetera Moka",
       "image": "/src/components/imgs/souvenir/cafetera-moka.jpg",
@@ -118,8 +118,8 @@
       "category": "Cafetera",
       "brand": "Moka",
       "countInStock": 2
-  },    
-  {
+   },
+   {
       "id": 13,
       "name": "Cafetera Expresso 6 tazas",
       "image": "/src/components/imgs/souvenir/cafetera-express-6-tazas.jpg",
@@ -128,8 +128,8 @@
       "category": "Cafetera",
       "brand": "Expresso",
       "countInStock": 4
-  },    
-  {
+   },
+   {
       "id": 14,
       "name": "Cafetera Tradicional",
       "image": "/src/components/imgs/souvenir/cafetera.jpg",
@@ -138,8 +138,8 @@
       "category": "Cafetera",
       "brand": "Tradicional",
       "countInStock": 3
-  },    
-  {
+   },
+   {
       "id": 15,
       "name": "Cafetera Profesional",
       "image": "/src/components/imgs/souvenir/cafeteras-que-utilizan-los-profesionales-1024x1024.jpg",
@@ -148,8 +148,8 @@
       "category": "Cafetera",
       "brand": "Profesional",
       "countInStock": 8
-  },    
-  {
+   },
+   {
       "id": 16,
       "name": "Set de Regalo",
       "image": "/src/components/imgs/souvenir/GORRA_JPG-2.jpg",
@@ -158,8 +158,8 @@
       "category": "Regalo",
       "brand": "Aroma de cafe",
       "countInStock": 5
-  },    
-  {
+   },
+   {
       "id": 17,
       "name": "Sombrilla",
       "image": "/src/components/imgs/souvenir/SOMBRILLA_JPG-5.jpg",
@@ -168,8 +168,8 @@
       "category": "Regalo",
       "brand": "Aroma de cafe",
       "countInStock": 3
-  },
-  {
+   },
+   {
       "id": 18,
       "name": "Gift Card",
       "image": "/src/components/imgs/souvenir/tarjetaregalo.png",
@@ -178,6 +178,5 @@
       "category": "Regalo",
       "brand": "Aroma de cafe",
       "countInStock": 3
-  }
-  ]
-  
+   }
+]
