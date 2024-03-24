@@ -5,7 +5,7 @@ const createTableUsers = `CREATE TABLE IF NOT EXISTS public.usuarios
     nombre_completo character varying(255) NOT NULL,
     id_rol integer NOT NULL,
     correo character varying(100) NOT NULL,
-    contrasenya character varying(50) NOT NULL,
+    contrasenya character varying(250) NOT NULL,
     estado_cuenta boolean NOT NULL,
     fecha_registro timestamp without time zone NOT NULL,
     fecha_actualizacion timestamp without time zone NOT NULL,
@@ -176,24 +176,30 @@ VALUES
 (DEFAULT, 'admin', 'admin', 'totales', true, CURRENT_DATE, CURRENT_DATE ),
 (DEFAULT, 'cliente', 'cliente', 'parciales', true, CURRENT_DATE, CURRENT_DATE );`;
 
-const insertDataIntoMarcas = `INSERT INTO marcas (id_marca, nombre_marca, fecha_creacion, fecha_actualizacion)
+const insertDataIntoMarcas = `INSERT INTO marcas (id_marca, nombre_marca, fecha_creacion)
 VALUES 
-(DEFAULT, 'Incapto', CURRENT_DATE, CURRENT_DATE),
-(DEFAULT, 'Cubico', CURRENT_DATE, CURRENT_DATE),
-(DEFAULT, 'Jo', CURRENT_DATE, CURRENT_DATE),
-(DEFAULT, 'Death Wish Coffee co', CURRENT_DATE, CURRENT_DATE),
-(DEFAULT, 'Fresh Roasted', CURRENT_DATE, CURRENT_DATE),
-(DEFAULT, 'Volcanica', CURRENT_DATE, CURRENT_DATE),
-(DEFAULT, 'Aroma de café', CURRENT_DATE, CURRENT_DATE),
-(DEFAULT, 'Mc COffee', CURRENT_DATE, CURRENT_DATE);`;
+(DEFAULT, 'Incapto', CURRENT_DATE),
+(DEFAULT, 'Cubico', CURRENT_DATE),
+(DEFAULT, 'Jo', CURRENT_DATE),
+(DEFAULT, 'Death Wish Coffee co', CURRENT_DATE),
+(DEFAULT, 'Fresh Roasted', CURRENT_DATE),
+(DEFAULT, 'Volcanica', CURRENT_DATE),
+(DEFAULT, 'Aroma de café', CURRENT_DATE),
+(DEFAULT, 'Mc COffee', CURRENT_DATE);`;
 
 const insertDataIntoCategoria = `INSERT INTO categorias (id_categoria, nombre_categoria, descripcion, imagen, fecha_creacion, fecha_actualizacion) VALUES (DEFAULT, 'Regalos', 'Merchandising y cafeteras', 'src/components/imgs/souvenir/Cafetera amarilla expreso.jpg', CURRENT_DATE, CURRENT_DATE);
 INSERT INTO categorias (id_categoria, nombre_categoria, descripcion, imagen, fecha_creacion, fecha_actualizacion) VALUES (DEFAULT, 'Cafes', 'Cafes', 'src/components/imgs/historiacafeFondo.jpg', CURRENT_DATE, CURRENT_DATE);`;
 
+const insertDataIntoUsuario = `INSERT INTO usuarios (nombre_usuario, nombre_completo, id_rol, correo, contrasenya, estado_cuenta, fecha_registro, fecha_actualizacion)
+VALUES ('admin', 'Administrador', 1, 'administrador@aromadecafe.com', '%s', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);`
+
 const getDataQuery =`SELECT * FROM productos ORDER BY %s %s LIMIT %s OFFSET %s`
 const getDataByIdQuery =`SELECT * FROM productos WHERE id_producto = %s`
 
-const getCorreo =`SELECT * FROM usuarios WHERE correo = %s`
+const getCorreo =`SELECT * FROM usuarios WHERE correo = '%s'`
+
+const insertUser =`INSERT INTO usuarios (nombre_usuario, nombre_completo, id_rol, correo, contrasenya, estado_cuenta, fecha_registro, fecha_actualizacion)
+VALUES ('%s', '%s', '%s', '%s','%s','%s',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)`
 
 
 module.exports = {
@@ -209,7 +215,9 @@ module.exports = {
    insertDataIntoRoles,
    insertDataIntoMarcas,
    insertDataIntoCategoria,
+   insertDataIntoUsuario,
    getCorreo,
    getDataByIdQuery,
-   getDataQuery
+   getDataQuery,
+   insertUser 
 };
