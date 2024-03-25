@@ -1,6 +1,23 @@
+const bcrypt = require('bcrypt');
+const format = require('pg-format');
+const salt = bcrypt.genSaltSync(10);
 require('dotenv').config();
-const {createTableCarrito, createTableProductos, createTableCategorias, 
-    createTableMarcas, createTableOrdenes,createTableRoles, createTableUsers, initial_setup, insertDataIntoProductos} = require('./querys/querys')
+
+
+const {createTableCarrito, 
+        createTableProductos, 
+        createTableCategorias, 
+        createTableMarcas, 
+        createTableOrdenes,
+        createTableRoles,
+        createTableUsers, 
+        initial_setup, 
+        insertDataIntoProductos,
+        insertDataIntoRoles,
+        insertDataIntoMarcas,
+        insertDataIntoCategoria,
+        insertDataIntoUsuario
+      } = require('./querys/querys')
 const {Pool} = require('pg');
 const {HOST, USER, PASSWORD, DATABASE} = process.env;
 
@@ -29,19 +46,30 @@ db.connect(async (error, client, done) => {
           await db.query(createTableProductos);
           console.log('Tabla productos creada correctamente');      
           await db.query(insertDataIntoProductos);
-          console.log('Datos iniciales insertados correctamente');
+          console.log('Datos iniciales en tabla productos insertados correctamente');
           await db.query(createTableUsers);
-          console.log('Tabla usuarios creada correctamente');
+          console.log('Tabla usuarios creada correctamente ');
+          const passwordEncriptada = bcrypt.hashSync("admin", salt);
+          const value = [passwordEncriptada]
+          const query = format(insertDataIntoUsuario,...value)
+          await db.query(query);
+          console.log('usuario administrador creado satisfactoriamente');
           await db.query(createTableCategorias);
           console.log('Tabla Categorias creada correctamente');
+          await db.query(insertDataIntoCategoria);
+          console.log('Datos iniciales en tabla categorias insertados correctamente');
           await db.query(createTableCarrito);
           console.log('Tabla Carrito creada correctamente');
           await db.query(createTableMarcas);
           console.log('Tabla Marcas creada correctamente');
+          await db.query(insertDataIntoMarcas);
+          console.log('Datos iniciales en tabla Marcas insertados correctamente');
           await db.query(createTableOrdenes);
           console.log('Tabla Ordenes creada correctamente');
           await db.query(createTableRoles);
           console.log('Tabla Roles creada correctamente');
+          await db.query(insertDataIntoRoles);
+          console.log('Datos iniciales en tabla Roles insertados correctamente');
           await db.query('UPDATE initial_setup SET initialized = TRUE WHERE id = 1');
           console.log('Base de datos inicializada correctamente');
         } else {
@@ -54,55 +82,3 @@ db.connect(async (error, client, done) => {
   });
 
 module.exports = db;
-
-
-// db.query(createTableProductos, (err, res) => {
-//     if (err) {
-//       console.error('Error al crear la tabla:', err);
-//     } else {
-//       console.log('Tabla productos creada correctamente o ya existente');
-//     }
-//   })
-//   db.query(createTableUsers, (err, res) => {
-//     if (err) {
-//       console.error('Error al crear la tabla:', err);
-//     } else {
-//       console.log('Tabla Usuarios creada correctamente o ya existente');
-//     }
-//   })
-//   db.query(createTableCategorias, (err, res) => {
-//     if (err) {
-//       console.error('Error al crear la tabla:', err);
-//     } else {
-//       console.log('Tabla Categorias creada correctamente o ya existente');
-//     }
-//   })
-//   db.query(createTableCarrito, (err, res) => {
-//     if (err) {
-//       console.error('Error al crear la tabla:', err);
-//     } else {
-//       console.log('Tabla Carrito creada correctamente o ya existente');
-//     }
-//   })
-//   db.query(createTableMarcas, (err, res) => {
-//     if (err) {
-//       console.error('Error al crear la tabla:', err);
-//     } else {
-//       console.log('Tabla Marcas creada correctamente o ya existente');
-//     }
-//   })
-//   db.query(createTableOrdenes, (err, res) => {
-//     if (err) {
-//       console.error('Error al crear la tabla:', err);
-//     } else {
-//       console.log('Tabla Ordenes creada correctamente o ya existente');
-//     }
-//   })
-//   db.query(createTableRoles, (err, res) => {
-//     if (err) {
-//       console.error('Error al crear la tabla:', err);
-//     } else {
-//       console.log('Tabla Roles creada correctamente o ya existente');
-//     }
-//   })
-// console.log("conexión a la DB exitosa")

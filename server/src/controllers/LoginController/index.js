@@ -2,11 +2,11 @@ const jwt = require("jsonwebtoken")
 const {KEYTOKEN} = process.env
 
 const login = async(req,res)=>{
-    const {correo} = req.body;
-    const token = jwt.sign({ correo }, KEYTOKEN)
+    const {email} = req.body;
+    const token = jwt.sign({email}, KEYTOKEN)
     res.status(200).json({
         msg: "Acceso concedido",
-        email: correo,
+        email: email,
         token: token
     })
 }

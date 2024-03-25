@@ -20,43 +20,27 @@ const validationFieldLogin =[
 	}
 }
 ]
-
 const validateCredentials = async(req,res,next)=>{
-    // const {correo, contrasenya} = req.body;
-    // try {
-    //     const query = format(getCorreo,correo)
-    //     const { rows: [usuario], rowCount } = await db.query(query);
-	// 	const { contrasenya: contrasenyaEncriptada } = usuario;
-	// 	const passwordEsCorrecta = bcrypt.compareSync(contrasenya, contrasenyaEncriptada)
-	// 	console.log(passwordEsCorrecta)
-    //     if (!passwordEsCorrecta || !rowCount){
-    //         res.status(401).json({ msg: "Correo o contraseña incorrecta" })
-    //     }
-    //     else{
-    //         next();
-    //     }
-    // } catch (error) {
-    //     res.status(400).send({error: error})
-    // }
+    const {email, password} = req.body;
+    try {
+		
+		value=[email];
+        const query = format(getCorreo,...value);
+        const { rows: [usuario], rowCount } = await db.query(query);
+		const passwordEncriptada = usuario.contrasenya;
+		const passwordEsCorrecta = bcrypt.compareSync(password, passwordEncriptada)
+		console.log(passwordEsCorrecta)
+        if (!passwordEsCorrecta || !rowCount){
+            res.status(401).json({ msg: "Correo o contraseña incorrecta" })
+        }
+        else{
+            next();
+        }
+    } catch (error) {
+        res.status(400).send({error: error})
+    }
 }
 
-const validationCorreo = async(req,res,next)=>{
-	const {correo} = req.body;
-	try {
-		const query = format(getCorreo,correo)
-		const data = await db.query(query)
-		if(data.rows.length){
-			res.status(409).json({
-				error: "bad request",
-				msg: "El usuario ya está registrado"
-			})
-		}
-		else{
-		next()
-	}
-	} catch (error) {
-		res.status(400).json(error)
-	}
-}
 
-module.exports ={validateCredentials,validationCorreo,validationFieldLogin}
+
+module.exports ={validateCredentials,validationFieldLogin}

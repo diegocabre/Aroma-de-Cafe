@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const {validationFieldLogin, validationCorreo} = require('../../middleware/index')
+const {validationFieldLogin, validateCredentials} = require('../../middleware/index')
 const {login}=require('../../controllers/index')
 
 
-router.get('/',validationFieldLogin, validationCorreo)
+router.post('/',validationFieldLogin,validateCredentials,login)
 
 module.exports = router

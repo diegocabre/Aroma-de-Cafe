@@ -12,11 +12,7 @@ const getData = async (req,res)=>{
     const data = await db.query(query);
     const {rowCount, rows} = data;
     if(rowCount){
-        res.status(200).json({
-            msg:"Productos",
-            rowCount: rowCount,
-            rows: rows
-        })
+        res.status(200).send(rows)
     }
     else{
         res.status(400).json({
@@ -32,9 +28,7 @@ const getDataById =async(req,res)=>{
     const data = await db.query(query);
     const {rowCount, rows} = data;
     if(rowCount){
-        res.status(200).json({
-            row: rows
-        })
+        res.status(200).send(rows)
     }
     else{
         res.status(400).json({
