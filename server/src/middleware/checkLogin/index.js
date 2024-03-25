@@ -1,7 +1,7 @@
 const db = require('../../database/db')
 const { check, validationResult} = require('express-validator');
 const bcrypt = require('bcrypt');
-const format = require('pg-format')
+const format = require('pg-format');
 const {getCorreo}= require('../../database/querys/querys');
 
 
@@ -16,7 +16,7 @@ const validationFieldLogin =[
 		validationResult(req).throw()
 		return next()
 	} catch (error) {
-		res.status(400).send({error: error.array()})
+		res.status(500).send({error: error.array()})
 	}
 }
 ]

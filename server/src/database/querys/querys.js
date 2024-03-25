@@ -78,14 +78,28 @@ const createTableOrdenes = `CREATE TABLE IF NOT EXISTS public.ordenes
 );
 `;
 
+// const createTableCarrito = `CREATE TABLE IF NOT EXISTS public.carrito
+// (
+//     id_carrito serial,
+//     id_usuario integer NOT NULL,
+//     cantidad integer NOT NULL,
+//     fecha_creacion timestamp without time zone,
+//     fecha_actualizacion timestamp without time zone,
+//     CONSTRAINT id_carrito PRIMARY KEY (id_carrito)
+// );
+// `;
+
 const createTableCarrito = `CREATE TABLE IF NOT EXISTS public.carrito
-(
-    id_carrito serial,
+(   
+    id serial PRIMARY KEY,
+    id_carrito integer NOT NULL,
     id_usuario integer NOT NULL,
+    id_producto integer NOT NULL,
     cantidad integer NOT NULL,
+    precio_unitario integer NOT NULL,
+    monto_total integer NOT NULL,
     fecha_creacion timestamp without time zone,
-    fecha_actualizacion timestamp without time zone,
-    CONSTRAINT id_carrito PRIMARY KEY (id_carrito)
+    fecha_actualizacion timestamp without time zone
 );
 `;
 
@@ -201,6 +215,13 @@ const getCorreo =`SELECT * FROM usuarios WHERE correo = '%s'`
 const insertUser =`INSERT INTO usuarios (nombre_usuario, nombre_completo, id_rol, correo, contrasenya, estado_cuenta, fecha_registro, fecha_actualizacion)
 VALUES ('%s', '%s', '%s', '%s','%s','%s',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)`
 
+const getDataCarrito = `SELECT * FROM carrito WHERE id_carrito = %s`
+
+const getDataUser =`SELECT * FROM usuarios WHERE id_usuario = %s`
+
+const addProductoToCarrito = `INSERT INTO carrito (id, id_carrito,id_usuario,id_producto,cantidad,precio_unitario,monto_total,fecha_creacion,fecha_actualizacion)
+VALUES (DEFAULT, '%s','%s','%s','%s','%s','%s',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)`
+
 
 module.exports = {
    createTableCarrito,
@@ -219,5 +240,8 @@ module.exports = {
    getCorreo,
    getDataByIdQuery,
    getDataQuery,
-   insertUser 
+   insertUser,
+   getDataCarrito,
+   addProductoToCarrito,
+   getDataUser
 };
