@@ -1,11 +1,16 @@
 const db= require('../../database/db');
-const {getDataCarrito,getDataByIdQuery,addProductoToCarrito} = require('../../database/querys/querys');
+const {getDataCarrito,
+    getDataByIdQuery,
+    addProductoToCarrito,
+    actTableCarrito,
+    deleteProductoIntoCarrito,
+    deleteCarrito} = require('../../database/querys/querys');
 const format = require('pg-format');
 
 
-const addProducto = async (req, res) => {
-    const { id_producto, cantidad, id_usuario =0 } = req.body;
+const addProducto = async (req, res) => {   
     try {
+        const { id_producto, cantidad, id_usuario =0 } = req.body;
         let {id_carrito} = req.session;
         if (!id_carrito) {
             id_carrito = Math.floor(Math.random() * 1000000);
@@ -19,7 +24,7 @@ const addProducto = async (req, res) => {
         let values = [id_carrito,id_usuario,id_producto,cantidad,precio_unitario,monto_total];
         const query = format(addProductoToCarrito,...values)
         await db.query(query)
-        res.status(200).json({ mensaje: 'Producto agregado al carrito' });
+        res.status(200).json({ mensaje: `Producto agregado al carrito ${id_carrito}` });
     } catch (error) {
         res.status(500).json({
             msg: "Error en el servidor"
@@ -28,11 +33,10 @@ const addProducto = async (req, res) => {
 };
 
 const getDataIntoCar = async(req,res)=>{
-    let {id_carrito} = req.session;
     try {
+        let {id_carrito} = req.session;
         const value = [id_carrito];
         const query = format(getDataCarrito,...value);
-        const data = await db.query(query)
         const {rows: producto, rowCount} =await db.query(query);
         if(rowCount==0){
             res.status(400).json({
@@ -44,6 +48,23 @@ const getDataIntoCar = async(req,res)=>{
         }  
     } catch (error) {
         res.status(500).json({
+            msg: "Error en el servidor",
+            errr: error
+        })
+    }  
+}
+const actDataIntoCar = async(req,res)=>{
+    try {
+        let {id_carrito} = req.session;
+        const {id_producto, cantidad} =req.body;
+        const values = [cantidad,id_carrito,id_producto];
+        const query = format(actTableCarrito,...values);
+        await db.query(query);
+            res.status(200).json({
+            msg: "Cantidad del producto actualizado"
+        })
+    } catch (error) {
+        res.status(500).json({
             msg: "Error en el servidor"
         })
     }
@@ -51,4 +72,32 @@ const getDataIntoCar = async(req,res)=>{
 
 }
 
-module.exports = {addProducto,getDataIntoCar}
+const deleteintoCar = async (req,res)=>{
+    try {
+        const {id_carrito}= req.session;
+        const {id_producto, borrarTodo=false} = req.body;
+        if(!borrarTodo){
+            const values =[ id_producto, id_carrito];
+            const query = format(deleteProductoIntoCarrito,...values);
+            await db.query(query);
+                res.status(200).json({
+                msg: "Producto eliminado del carrito"
+                })
+        }
+        else{
+            const value =[id_carrito];
+            const query = format(deleteCarrito,...value);
+            await db.query(query);
+                res.status(200).json({
+                msg: "Productos eliminado del carrito"
+                })
+        }
+    } catch (error) {
+            res.status(500).json({
+            msg: "Error en el servidor"
+        })
+    }
+    
+}
+
+module.exports = {addProducto,getDataIntoCar,actDataIntoCar,deleteintoCar}

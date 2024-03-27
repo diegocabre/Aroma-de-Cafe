@@ -20,7 +20,7 @@ const checkCarritoField = [
                     msg:"el valor de id_producto es incorrecto debe ser un número positivo"
                 })
             }
-            else if( cantidad <=0 ){
+            else if( cantidad < 0 ){
                 res.status(400).json({
                     msg:"el valor de cantidad es incorrecto debe ser un número positivo"
                 })
@@ -39,49 +39,84 @@ const checkCarritoField = [
 }]
 
 const checkCarrito = async(req,res,next)=>{
-    const {id_producto, cantidad,id_usuario=0 } = req.body;
-    const value =[id_producto];
-    const query=format(getDataByIdQuery,...value);
-    const {rowCount}= await db.query(query);
-    if(rowCount==0){
-        console.log("entro a validar producto")
-        res.status(400).json({
-            msg:`el producto con id ${ id_producto}, no existe en la base de datos`
-        })
-    }
-    else if(id_usuario>0){
-        console.log("entro a validar usuario")
-        const value = [id_usuario];
-        const query = format(getDataUser,...value);
-        const {rowCount} = await db.query(query);
-        
+    try {
+        const {id_producto, cantidad,id_usuario=0 } = req.body;
+        const value =[id_producto];
+        const query=format(getDataByIdQuery,...value);
+        const {rowCount}= await db.query(query);
         if(rowCount==0){
             res.status(400).json({
-                msg:`el usuario con id ${ id_usuario}, no existe en la base de datos`
+                msg:`el producto con id ${ id_producto}, no existe en la base de datos`
+            })
+        }
+        else if(id_usuario>0){
+            const value = [id_usuario];
+            const query = format(getDataUser,...value);
+            const {rowCount} = await db.query(query);
+            
+            if(rowCount==0){
+                res.status(400).json({
+                    msg:`el usuario con id ${ id_usuario}, no existe en la base de datos`
+                })
+            }
+            else{
+                return next() 
+            }
+        }
+        else{
+            return next()
+        }   
+    } catch (error) {
+        res.status(500).send({error: error.array()})
+    }
+    
+    
+}
+
+const checkSesion = (req,res,next)=>{
+
+    try {
+        let {id_carrito} = req.session;
+        if (!id_carrito) {
+            res.status(400).json({
+                msg: "id_carrito indefinido"
+            }) 
+        }
+        else if(id_carrito<=0|| !/^\d+$/.test(id_carrito)){
+            res.status(400).json({
+                msg: "El id_carrito debe ser un valor númerico mayor a cero"
             })
         }
         else{
-            return next() 
-        }
+            return next()
+        } 
+    } catch (error) {
+        res.status(500).send({error: error.array()})
     }
-    else{
-        return next()
-    }
+    
 }
 
-const checkSesion = (req,res)=>{
-    let {id_carrito} = req.session;
-    console.log(id_carrito)
-    if (!id_carrito) {
-        res.status(400).json({
-            msg: "id_carrito indefinido"
-        }) 
+const checkDeleteCarrito = (req,res,next)=>{
+    try {
+        const {id_carrito}= req.session;
+        const {id_producto, borrarTodo=false} = req.body;
+            if(!borrarTodo){
+                if( id_carrito<=0|| !/^\d+$/.test(id_carrito)){
+                    res.status(400).json({
+                    msg: "El id_carrito debe ser un valor númerico mayor a cero"
+                    })
+                }
+                else{
+                    return next();
+                }
+            }
+            else{
+                return next();
+            }
+    } catch (error) {
+        res.status(500).send({error: error.array()})
     }
-    else if(id_carrito<=0|| !/^\d+$/.test(id)){
-        res.status(400).json({
-            msg: "El id_carrito debe ser un valor númerico mayor a cero"
-        })
-    }
+    
 }
 
-module.exports ={checkCarritoField,checkCarrito,checkSesion}
+module.exports ={checkCarritoField,checkCarrito,checkSesion,checkDeleteCarrito}

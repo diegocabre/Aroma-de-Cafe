@@ -215,13 +215,22 @@ const getCorreo =`SELECT * FROM usuarios WHERE correo = '%s'`
 const insertUser =`INSERT INTO usuarios (nombre_usuario, nombre_completo, id_rol, correo, contrasenya, estado_cuenta, fecha_registro, fecha_actualizacion)
 VALUES ('%s', '%s', '%s', '%s','%s','%s',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)`
 
-const getDataCarrito = `SELECT * FROM carrito WHERE id_carrito = %s`
+const getDataCarrito = `SELECT * FROM carrito WHERE id_carrito = '%s'`
 
 const getDataUser =`SELECT * FROM usuarios WHERE id_usuario = %s`
 
 const addProductoToCarrito = `INSERT INTO carrito (id, id_carrito,id_usuario,id_producto,cantidad,precio_unitario,monto_total,fecha_creacion,fecha_actualizacion)
 VALUES (DEFAULT, '%s','%s','%s','%s','%s','%s',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)`
 
+const actTableCarrito =`UPDATE carrito
+SET cantidad = '%s'
+WHERE id_carrito = '%s' AND id_producto = '%s';`
+
+const deleteProductoIntoCarrito= `DELETE FROM carrito
+WHERE id_producto = '%s' AND id_carrito = '%s';`;
+
+const deleteCarrito= `DELETE FROM carrito
+WHERE id_carrito = '%s';`;
 
 module.exports = {
    createTableCarrito,
@@ -243,5 +252,8 @@ module.exports = {
    insertUser,
    getDataCarrito,
    addProductoToCarrito,
-   getDataUser
+   getDataUser,
+   actTableCarrito,
+   deleteProductoIntoCarrito,
+   deleteCarrito
 };

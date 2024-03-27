@@ -27,6 +27,21 @@ Para abarcar una problemática es importante tener un modelo de datos ajustado a
 
 Este servidor backend proporciona una API RESTful para gestionar ciertos recursos.
 
+Para poder utilizarlo es necesario unas configuraciones iniciales:
+
+1- Es necesario crear una base de dato donde se va a almacenar toda la información del ecommerce, es necesario recordar el nombre de la base de datos ya que se va a utilizar en las configuraciones del servidor.
+
+2- configurar las variables de entorno en el servidor:
+
+Las variables a definir son las siguientes:
+
+PORT //Puerto donde quieres que se ejecute el servidor.
+HOST= //Dirección del servidor
+USER= //usuario para la conexión a la base de datos
+DATABASE //Nombre de la base de datos creado en el punto anteior 
+PASSWORD //Contraseña de la base de datos
+KEYTOKEN //llave para la encriptación de las contraseñas.
+
 Rutas disponibles 
 
 `GET /productos`
@@ -41,7 +56,7 @@ Código 200
 Cuerpo de respuesta: Array de objetos.
 Respuesta de error:
 Código 400: Error por mala solicitud.
-Código 400: Error interno del servidor.
+Código 500: Error interno del servidor.
 
 `GET /productos/$id`
 
@@ -90,6 +105,74 @@ json
 Copy code
 {
   "mensaje": "Usuario registrado correctamente"
+}
+Respuesta de error:
+Código 400: Error de validación en los datos enviados.
+Código 500: Error interno del servidor.
+
+`GET /carrito`
+
+Descripción: Obtiene todos los productos dentro del carrito
+Parámetros de consulta: Se debe generar un id_carrito, el cual se genera automaticamente al agregar cualquier producto al carrito
+Respuesta exitosa:
+Código 200
+Cuerpo de respuesta: Array de objetos.
+Respuesta de error:
+Código 400: Error por mala solicitud.
+Código 500: Error interno del servidor.
+
+`POST /carrito`
+
+Descripción: Agrega un producto al carrito.
+Parámetros de entrada:
+id_producto: identificador del producto a agregar al carrito
+cantidad: cantidad del producto a agregar
+id_usuario: En caso de que el usuario este registrado, envío del id
+
+Respuesta exitosa:
+Código 200
+Cuerpo de respuesta: Mensaje exitoso
+json
+{
+  "mensaje": Producto agregado al carrito ${id_carrito}
+}
+Respuesta de error:
+Código 400: Error de validación en los datos enviados.
+Código 500: Error interno del servidor.
+
+`PUT /carrito`
+
+Descripción: Varia la cantidad de un producto en el carrito.
+Parámetros de entrada:
+id_carrito: Número aleatorio creado al agregar un producto en el carrito y que se almacena en los cookies.
+id_producto: identificador del producto a agregar al carrito
+cantidad: cantidad del producto a agregar
+
+Respuesta exitosa:
+Código 200
+Cuerpo de respuesta: Mensaje exitoso
+json
+{
+  "mensaje": "Cantidad del producto actualizado"
+}
+Respuesta de error:
+Código 400: Error de validación en los datos enviados.
+Código 500: Error interno del servidor.
+
+`DELETE /carrito`
+
+Descripción: Elimina uno o todos los productos del carrito.
+Parámetros de entrada:
+id_carrito: Número aleatorio creado al agregar un producto en el carrito y que se almacena en los cookies.
+id_producto: identificador del producto a agregar al carrito
+BorraTodo: Valor booleano true o false, para eliminar todos los productos del carrito
+
+Respuesta exitosa:
+Código 200
+Cuerpo de respuesta: Mensaje exitoso
+json
+{
+  "mensaje": "Producto eliminado del carrito"
 }
 Respuesta de error:
 Código 400: Error de validación en los datos enviados.
