@@ -13,8 +13,8 @@ const validationFieldRegistrer = [
 		.withMessage("El nombre es requerido con minimo 3 caracteres")
         .isString()
 		.withMessage("El nombre es requerido y debe ser un string")
-		.custom(value => /^[a-zA-Z]+$/.test(value))
-    	.withMessage('El nombre debe contener solo letras'),
+		.matches(/^(?!.*(\w)\1\1)[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s']+$/)
+    	.withMessage('El nombre debe contener solo letras, espacios, apóstrofes y acentos, sin 3 letras iguales seguidas'),
     check('lastName')
 		.trim()
         .notEmpty()
@@ -22,8 +22,8 @@ const validationFieldRegistrer = [
 		.withMessage("El nombre es requerido con minimo 3 caracteres")
         .isString()
 		.withMessage("El apellido es requerido y debe ser un string")
-		.custom(value => /^[a-zA-Z]+$/.test(value))
-    	.withMessage('El apellido debe contener solo letras'),
+		.matches(/^(?!.*(\w)\1\1)[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s']+$/)
+    	.withMessage('El apellido debe contener solo letras, espacios, apóstrofes y acentos, sin 3 letras iguales seguidas'),
 	check('email')
 		.trim()
 		.notEmpty()
