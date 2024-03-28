@@ -1,8 +1,9 @@
-const db = require('../../database/db')
+const db = require('../../database/db');
+const jwt = require("jsonwebtoken");
 const { check, validationResult} = require('express-validator');
-const bcrypt = require('bcrypt');
 const format = require('pg-format')
 const {getCorreo}= require('../../database/querys/querys');
+const {KEYTOKEN} =process.env;
 
 const validationFieldRegistrer = [
     check('name')
@@ -40,7 +41,7 @@ const validationFieldRegistrer = [
         }
 		
 	} catch (error) {
-		res.status(500).send({error: error.array()})
+		return res.status(500).send({error: error.array()})
 		
 	}
 }
@@ -52,17 +53,30 @@ const validationCorreo = async(req,res,next)=>{
 		const query = format(getCorreo,...value)
 		const data = await db.query(query)
 		if(data.rows.length){
-			res.status(400).json({
+			return res.status(409).json({
 				error: "bad request",
 				msg: "El usuario ya está registrado"
 			})
 		}
 		else{
-		next()
+		return next()
 	}
 	} catch (error) {
-		res.status(400).json(error)
+		return res.status(500).json(error)
 	}
 }
 
-module.exports = {validationCorreo,validationFieldRegistrer}
+const verifytoken =async(req,res,next)=>{
+	try {
+		const Authorization = req.header("Authorization");
+		const token = Authorization.split("Bearer ")[1];
+		jwt.verify(token, KEYTOKEN);
+		console.log("token verificado")
+		return next();
+	} catch (error) {
+		return res.status(401).send({error: error})
+	}
+
+}
+
+module.exports = {validationCorreo,validationFieldRegistrer,verifytoken}

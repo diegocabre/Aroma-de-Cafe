@@ -19,6 +19,7 @@ const {createTableCarrito,
         insertDataIntoUsuario
       } = require('./querys/querys')
 const {Pool} = require('pg');
+
 const {HOST, USER, PASSWORD, DATABASE} = process.env;
 
 const db = new Pool ({
