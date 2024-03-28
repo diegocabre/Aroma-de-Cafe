@@ -7,12 +7,21 @@ const {KEYTOKEN} =process.env;
 
 const validationFieldRegistrer = [
     check('name')
+		.trim()
         .notEmpty()
-        .isString(),
+        .isString()
+		.withMessage("El nombre es requerido y debe ser un string")
+		.custom(value => /^[a-zA-Z]+$/.test(value))
+    	.withMessage('El nombre debe contener solo letras'),
     check('lastName')
+		.trim()
         .notEmpty()
-        .isString(),
+        .isString()
+		.withMessage("El apellido es requerido y debe ser un string")
+		.custom(value => /^[a-zA-Z]+$/.test(value))
+    	.withMessage('El nombre debe contener solo letras'),
 	check('email')
+		.trim()
 		.notEmpty()
 		.isEmail(),
     check('password')
@@ -41,7 +50,7 @@ const validationFieldRegistrer = [
         }
 		
 	} catch (error) {
-		return res.status(500).send({error: error.array()})
+		return res.status(400).send({error: error.array()})
 		
 	}
 }

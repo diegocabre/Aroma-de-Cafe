@@ -14,7 +14,6 @@ const validationFieldLogin =[
 (req,res,next)=>{
 	try {
 		validationResult(req).throw();
-        console.log("paso el primer filtro")
 		return next()
 	} catch (error) {
 		return res.status(500).send({error: error.array()})
@@ -29,7 +28,7 @@ const validateCredentials = async(req,res,next)=>{
         const query = format(getCorreo,...value);
         const { rows: [usuario], rowCount } = await db.query(query);
         if(!usuario){
-            return res.status(404).json({ msg: "Usuario no registrado" })
+            return res.status(404).json({ msg: "Correo invalido" })
         }
         const passwordEncriptada = usuario.contrasenya;
         console.log(passwordEncriptada)

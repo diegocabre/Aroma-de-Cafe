@@ -1,7 +1,7 @@
 
 checkProductos = async(req,res,next)=>{
     try {
-        const {limits =10, page = 1, order_by = "id_producto-ASC"} = req.query;
+        const {limits =18, page = 1, order_by = "id_producto-ASC"} = req.query;
         const orderParams = order_by.split("-");
     if (limits <= 0 || page <= 0) {
         res.status(400).json({

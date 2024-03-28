@@ -3,12 +3,13 @@ const {getDataQuery,getDataByIdQuery} = require('../../database/querys/querys');
 const format = require('pg-format')
 
 const getData = async (req,res)=>{
-    const {limits =10, page = 1, order_by = "id_producto-ASC"}= req.query;
+    const {limits=18, page = 1, order_by = "id_producto-ASC"}= req.query;
     const limit = parseInt(limits);
     const offset = (page - 1) * limits;
     const [orderByField, orderByDirection] = order_by.split("-");
     const values = [orderByField,orderByDirection,limit,offset]
     const query = format(getDataQuery,...values)
+    console.log(query)
     const data = await db.query(query);
     const {rowCount, rows} = data;
     if(rowCount){
