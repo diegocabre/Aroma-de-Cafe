@@ -188,3 +188,18 @@ Cuerpo de respuesta: Array de objetos.
 Respuesta de error:
 Código 401: Error por mala solicitud token invalido.
 Código 500: Error interno del servidor.
+
+`PUT /perfil`
+
+Descripción: Modifica los datos del usuario
+Parámetros de consulta: token generado al iniciar sesión, se debe enviar por la cabecera Authorización.
+Parametros a modificar:
+nombre: nombre completo del usuario;
+contraseña: contraseña actual;
+nueva_contraseña: nueva contraseña que cumpla con los niveles de seguridad
+Respuesta exitosa:
+Código 200
+Cuerpo de respuesta: Array de objetos.
+Respuesta de error:
+Código 401: Error por mala solicitud token invalido.
+Código 500: Error interno del servidor.
