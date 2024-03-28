@@ -16,17 +16,17 @@ const checkCarritoField = [
             validationResult(req).throw()
             const { id_producto, cantidad, id_usuario =0 } = req.body;
             if(id_producto<=0){
-                res.status(400).json({
+                return res.status(400).json({
                     msg:"el valor de id_producto es incorrecto debe ser un número positivo"
                 })
             }
             else if( cantidad < 0 ){
-                res.status(400).json({
+                return res.status(400).json({
                     msg:"el valor de cantidad es incorrecto debe ser un número positivo"
                 })
             }
             else if(id_usuario<0){
-                res.status(400).json({
+                return res.status(400).json({
                     msg:"el valor de id_usuario es incorrecto debe ser un número positivo"
                 })
             }
@@ -34,7 +34,7 @@ const checkCarritoField = [
                 return next()
             }
         } catch (error) {
-            res.status(500).send({error: error.array()})
+            return res.status(500).send({error: error.array()})
         }
 }]
 
@@ -45,7 +45,7 @@ const checkCarrito = async(req,res,next)=>{
         const query=format(getDataByIdQuery,...value);
         const {rowCount}= await db.query(query);
         if(rowCount==0){
-            res.status(400).json({
+            return res.status(404).json({
                 msg:`el producto con id ${ id_producto}, no existe en la base de datos`
             })
         }
@@ -55,7 +55,7 @@ const checkCarrito = async(req,res,next)=>{
             const {rowCount} = await db.query(query);
             
             if(rowCount==0){
-                res.status(400).json({
+                return res.status(404).json({
                     msg:`el usuario con id ${ id_usuario}, no existe en la base de datos`
                 })
             }

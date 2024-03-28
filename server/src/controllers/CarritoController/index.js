@@ -24,7 +24,7 @@ const addProducto = async (req, res) => {
         let values = [id_carrito,id_usuario,id_producto,cantidad,precio_unitario,monto_total];
         const query = format(addProductoToCarrito,...values)
         await db.query(query)
-        res.status(200).json({ mensaje: `Producto agregado al carrito ${id_carrito}` });
+        res.status(201).json({ mensaje: `Producto agregado al carrito ${id_carrito}` });
     } catch (error) {
         res.status(500).json({
             msg: "Error en el servidor"
@@ -60,7 +60,7 @@ const actDataIntoCar = async(req,res)=>{
         const values = [cantidad,id_carrito,id_producto];
         const query = format(actTableCarrito,...values);
         await db.query(query);
-            res.status(200).json({
+            res.status(204).json({
             msg: "Cantidad del producto actualizado"
         })
     } catch (error) {
@@ -80,7 +80,7 @@ const deleteintoCar = async (req,res)=>{
             const values =[ id_producto, id_carrito];
             const query = format(deleteProductoIntoCarrito,...values);
             await db.query(query);
-                res.status(200).json({
+                res.status(204).json({
                 msg: "Producto eliminado del carrito"
                 })
         }
@@ -88,8 +88,8 @@ const deleteintoCar = async (req,res)=>{
             const value =[id_carrito];
             const query = format(deleteCarrito,...value);
             await db.query(query);
-                res.status(200).json({
-                msg: "Productos eliminado del carrito"
+                res.status(204).json({
+                msg: "Carrito eliminado"
                 })
         }
     } catch (error) {
