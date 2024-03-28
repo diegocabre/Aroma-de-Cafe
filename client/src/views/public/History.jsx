@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/css/History.css";
+import "../../components/css/History.css";
 
 export default function History() {
   return (

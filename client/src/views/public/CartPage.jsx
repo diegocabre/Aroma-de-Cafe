@@ -1,8 +1,8 @@
 import React from "react";
-import { useCart } from "../components/context/CartContext";
+import { useCart } from "../../components/context/CartContext";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import "../components/css/CartPage.css";
+import "../../components/css/CartPage.css";
 
 const CartPage = () => {
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
