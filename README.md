@@ -177,3 +177,14 @@ json
 Respuesta de error:
 Código 400: Error de validación en los datos enviados.
 Código 500: Error interno del servidor.
+
+`GET /perfil`
+
+Descripción: Obtiene los datos del perfil de usuario
+Parámetros de consulta: token generado al iniciar sesión, se debe enviar por la cabecera Authorización
+Respuesta exitosa:
+Código 200
+Cuerpo de respuesta: Array de objetos.
+Respuesta de error:
+Código 401: Error por mala solicitud token invalido.
+Código 500: Error interno del servidor.

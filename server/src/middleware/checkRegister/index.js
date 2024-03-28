@@ -1,7 +1,9 @@
-const db = require('../../database/db')
+const db = require('../../database/db');
+const jwt = require("jsonwebtoken");
 const { check, validationResult} = require('express-validator');
 const format = require('pg-format')
 const {getCorreo}= require('../../database/querys/querys');
+const {KEYTOKEN} =process.env;
 
 const validationFieldRegistrer = [
     check('name')
@@ -64,4 +66,17 @@ const validationCorreo = async(req,res,next)=>{
 	}
 }
 
-module.exports = {validationCorreo,validationFieldRegistrer}
+const verifytoken =async(req,res,next)=>{
+	try {
+		const Authorization = req.header("Authorization");
+		const token = Authorization.split("Bearer ")[1];
+		jwt.verify(token, KEYTOKEN);
+		console.log("token verificado")
+		return next();
+	} catch (error) {
+		return res.status(401).send({error: error})
+	}
+
+}
+
+module.exports = {validationCorreo,validationFieldRegistrer,verifytoken}
