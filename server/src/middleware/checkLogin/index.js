@@ -13,31 +13,36 @@ const validationFieldLogin =[
 		.notEmpty(),
 (req,res,next)=>{
 	try {
-		validationResult(req).throw()
+		validationResult(req).throw();
+        console.log("paso el primer filtro")
 		return next()
 	} catch (error) {
-		res.status(500).send({error: error.array()})
+		return res.status(500).send({error: error.array()})
 	}
 }
 ]
 const validateCredentials = async(req,res,next)=>{
     const {email, password} = req.body;
     try {
-		
 		value=[email];
+        console.log(value);
         const query = format(getCorreo,...value);
         const { rows: [usuario], rowCount } = await db.query(query);
-		const passwordEncriptada = usuario.contrasenya;
-		const passwordEsCorrecta = bcrypt.compareSync(password, passwordEncriptada)
-		console.log(passwordEsCorrecta)
-        if (!passwordEsCorrecta || !rowCount){
-            res.status(401).json({ msg: "Correo o contraseña incorrecta" })
+        if(!usuario){
+            return res.status(404).json({ msg: "Usuario no registrado" })
+        }
+        const passwordEncriptada = usuario.contrasenya;
+        console.log(passwordEncriptada)
+        const passwordEsCorrecta = bcrypt.compareSync(password, passwordEncriptada)
+        console.log(passwordEsCorrecta)
+        if (!passwordEsCorrecta || rowCount==0){
+            return res.status(401).json({ msg: "contraseña incorrecta" })
         }
         else{
-            next();
+            return next();
         }
     } catch (error) {
-        res.status(400).send({error: error})
+        return res.status(500).send({error: error})
     }
 }
 

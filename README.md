@@ -75,7 +75,7 @@ Parámetros de entrada:
 email: Correo electrónico del usuario.
 contraseña: Contraseña del usuario.
 Respuesta exitosa:
-Código 200
+Código 201
 Cuerpo de respuesta: Objeto con el token de acceso, nombre de usuario y correo electrónico.
 json
 Copy code
@@ -130,7 +130,7 @@ cantidad: cantidad del producto a agregar
 id_usuario: En caso de que el usuario este registrado, envío del id
 
 Respuesta exitosa:
-Código 200
+Código 201
 Cuerpo de respuesta: Mensaje exitoso
 json
 {
@@ -149,7 +149,7 @@ id_producto: identificador del producto a agregar al carrito
 cantidad: cantidad del producto a agregar
 
 Respuesta exitosa:
-Código 200
+Código 204
 Cuerpo de respuesta: Mensaje exitoso
 json
 {
@@ -168,7 +168,7 @@ id_producto: identificador del producto a agregar al carrito
 BorraTodo: Valor booleano true o false, para eliminar todos los productos del carrito
 
 Respuesta exitosa:
-Código 200
+Código 204
 Cuerpo de respuesta: Mensaje exitoso
 json
 {
