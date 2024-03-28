@@ -9,6 +9,8 @@ const validationFieldRegistrer = [
     check('name')
 		.trim()
         .notEmpty()
+		.isLength({ min: 3 })
+		.withMessage("El nombre es requerido con minimo 3 caracteres")
         .isString()
 		.withMessage("El nombre es requerido y debe ser un string")
 		.custom(value => /^[a-zA-Z]+$/.test(value))
@@ -16,10 +18,12 @@ const validationFieldRegistrer = [
     check('lastName')
 		.trim()
         .notEmpty()
+		.isLength({ min: 3 })
+		.withMessage("El nombre es requerido con minimo 3 caracteres")
         .isString()
 		.withMessage("El apellido es requerido y debe ser un string")
 		.custom(value => /^[a-zA-Z]+$/.test(value))
-    	.withMessage('El nombre debe contener solo letras'),
+    	.withMessage('El apellido debe contener solo letras'),
 	check('email')
 		.trim()
 		.notEmpty()

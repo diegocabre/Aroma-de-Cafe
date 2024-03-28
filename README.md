@@ -72,8 +72,12 @@ Código 400: Error id no valido.
 
 Descripción: Autenticación de usuario para obtener un token de acceso.
 Parámetros de entrada:
+{
 email: Correo electrónico del usuario.
-contraseña: Contraseña del usuario.
+password: Contraseña del usuario.
+}
+Estos valores deben ser enviados por el body
+
 Respuesta exitosa:
 Código 201
 Cuerpo de respuesta: Objeto con el token de acceso, nombre de usuario y correo electrónico.
