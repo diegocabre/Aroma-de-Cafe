@@ -47,7 +47,7 @@ Rutas disponibles
 `GET /productos`
 
 Descripción: Obtiene todos los productos.
-Parámetros de consulta:  limit, page, order_by, por defecto están asignados los siguientes valores, 10, 1 y id_producto-ASC.
+Parámetros de consulta:  limit, page, order_by, por defecto están asignados los siguientes valores, 10, 1 y id_producto-ASC. Estos valores se deben enviar por la query.
 Para el caso de limit  se aceptan solo valores númericos mayores a cero.
 Para el caso de page se aceptan solo valores númericos mayores a cero.
 Para el caso de order_by solo se aceptan los siguientes dos campos: el primero se aceptan ordenamiento debe contener id_producto, categoria o precio, para el segundo campo: ASC o DESC. Estos campos deben estar separados por el caracter "-". ejemplo: id_producto-ASC
@@ -92,12 +92,14 @@ Código 500: Error interno del servidor.
 `POST /registro`
 
 Descripción: Registro de un nuevo usuario.
-Parámetros de entrada:
-name: Nombre del usuario.
-lastName: Apellido del usuario.
-email: Correo electrónico del usuario.
-contraseña: Contraseña del usuario.
-contraseñaConfirm: Confirmación de la contraseña del usuario.
+Parámetros de entrada, valores enviado por el body:
+{
+  name: Nombre del usuario.
+  lastName: Apellido del usuario.
+  email: Correo electrónico del usuario.
+  password: Contraseña del usuario.
+  passwordConfir: Confirmación de la contraseña del usuario.
+}
 Respuesta exitosa:
 Código 201
 Cuerpo de respuesta: Objeto con el mensaje de éxito.
