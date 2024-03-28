@@ -1,6 +1,5 @@
 const db = require('../../database/db')
 const { check, validationResult} = require('express-validator');
-const bcrypt = require('bcrypt');
 const format = require('pg-format')
 const {getCorreo}= require('../../database/querys/querys');
 
@@ -40,7 +39,7 @@ const validationFieldRegistrer = [
         }
 		
 	} catch (error) {
-		res.status(500).send({error: error.array()})
+		return res.status(500).send({error: error.array()})
 		
 	}
 }
@@ -52,16 +51,16 @@ const validationCorreo = async(req,res,next)=>{
 		const query = format(getCorreo,...value)
 		const data = await db.query(query)
 		if(data.rows.length){
-			res.status(400).json({
+			return res.status(409).json({
 				error: "bad request",
 				msg: "El usuario ya está registrado"
 			})
 		}
 		else{
-		next()
+		return next()
 	}
 	} catch (error) {
-		res.status(400).json(error)
+		return res.status(500).json(error)
 	}
 }
 
