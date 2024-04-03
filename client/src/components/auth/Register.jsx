@@ -19,14 +19,19 @@ function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
+    }
     try {
-      const response = await fetch("http://localhost:3000/register", {
+      const response = await fetch("http://localhost:3000/registro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(validated),
       });
+
       const data = await response.json();
       console.log(data);
     } catch (error) {
